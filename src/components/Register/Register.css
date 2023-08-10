@@ -1,0 +1,96 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #202020;
+  color: #fff;
+  padding-top: 70px;
+
+}
+
+.header__logo_register {
+  display: block;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding-bottom: 91px;
+}
+
+.form__input_title {
+  display: block;
+  color: #8B8B8B;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.form__input {
+  display: block;
+  background: none;
+  max-width: 400px;
+  width: 100%;
+  color: #fff;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #424242;
+  padding: 5px 0 10px;
+  outline: none;
+}
+
+.form__input:focus {
+  border-bottom: 1px solid #4285F4;
+}
+
+.form__input_password {
+  color: #EE3465;
+}
+
+.form__button {
+  border: none;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFF;
+  background-color: #4285F4;
+  padding: 14px 125px;
+  cursor: pointer;
+}
+
+.form__text {
+  color: #8B8B8B;
+  text-align: center;
+  font-size: 14px;
+}
+
+.form__link {
+  color: #4285F4;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 560px) {
+  .form__button {
+    padding: 14px calc(68px + (125 - 68) * ((100vw - 320px) / (560 - 320)));
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__logo_register {
+    margin: auto;
+  }
+
+  .auth__title {
+    text-align: center;
+    margin: 50px auto 80px;
+  }
+
+  .form__field {
+    padding-bottom: 237px;
+  }
+}

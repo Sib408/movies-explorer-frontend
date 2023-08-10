@@ -1,0 +1,43 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #202020;
+  color: #fff;
+  padding-top: 70px;
+  overflow: hidden;
+}
+
+.header__logo_register {
+  display: block;
+}
+
+.form__field_login {
+  width: 396px;
+  padding-bottom: 221px;
+}
+
+.form__button_login {
+  padding: 15px 178px;
+}
+
+@media screen and (max-width: 560px) {
+
+  .form__field_login {
+    width: calc(260px + (396 - 260) * ((100vw - 320px) / (560 - 320)));
+    margin: auto;
+  }
+
+  .form__button_login {
+    padding: 15px calc(112px + (177 - 112) * ((100vw - 320px) / (560 - 320)));
+    margin: auto;
+  }
+
+  .form__text_login {
+    font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (560 - 320)));
+  }
+
+  .form__link_login {
+    font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (560 - 320)));
+  }
+}
