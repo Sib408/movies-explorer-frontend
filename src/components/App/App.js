@@ -16,55 +16,58 @@ import Navigation from '../Navigation/Navigation';
 function App() {
   return (
     <div className="app">
-      <Router>
-        <Routes>
+      <div className="app__container">
+        <Router>
+          <Routes>
 
-          <Route exact path={'/'} element={<>
-            <Header />
-            <Main />
-            <Footer />
-          </>}>
-          </Route>
-
-          <Route exact path={'/signup'} element={<>
-            <Register />
-          </>}>
-          </Route>
-
-          <Route exact path={'/signin'} element={<>
-            <Login />
-          </>}>
-          </Route>
-
-          <Route exact path={'/movies'} element={<>
-            <Navigation />
-            <Movies />
-            <Footer />
-          </>}>
-          </Route>
-
-          <Route exact path={'/saved-movies'} element={<>
-            <Navigation />
-            <SavedMovies />
-            <Footer />
-          </>}>
-          </Route>
-
-          <Route exact path={'/profile'} element={<>
-            <Navigation />
-            <Profile />
-          </>}>
-          </Route>
-
-          <Route exact path={'*'} element={
-            <>
-              < PageNotFound />
+            <Route exact path={'/'} element={<>
+              <Header />
+              <Main />
+              <Footer />
             </>}>
-          </Route>
+            </Route>
 
-        </Routes>
-      </Router>
+            <Route exact path={'/signup'} element={<>
+              <Register />
+            </>}>
+            </Route>
+
+            <Route exact path={'/signin'} element={<>
+              <Login />
+            </>}>
+            </Route>
+
+            <Route exact path={'/movies'} element={<>
+              <Navigation />
+              <Movies />
+              <Footer />
+            </>}>
+            </Route>
+
+            <Route exact path={'/saved-movies'} element={<>
+              <Navigation />
+              <SavedMovies />
+              <Footer />
+            </>}>
+            </Route>
+
+            <Route exact path={'/profile'} element={<>
+              <Navigation />
+              <Profile />
+            </>}>
+            </Route>
+
+            <Route exact path={'*'} element={
+              <>
+                < PageNotFound />
+              </>}>
+            </Route>
+
+          </Routes>
+        </Router>
+      </div>
     </div>
+
   );
 }
 export default App;
