@@ -28,7 +28,7 @@ function Navigation() {
   }, [])
 
   return (
-    <section className='navigation'>
+    <nav className='navigation'>
       <div className='navigation__menu'>
         <Link className="header__logo header__logo_navigation" to='/' />
 
@@ -45,7 +45,7 @@ function Navigation() {
           />
         </div>
       </div>
-    </section>
+    </nav>
   )
 }
 

@@ -9,6 +9,7 @@
 .aboutProject__section__title {
   font-size: 22px;
   line-height: 27px;
+  font-weight: 400;
   letter-spacing: -0.04em;
   color: #FFF;
   padding-bottom: 23px;
@@ -34,12 +35,13 @@
 }
 
 .aboutProject_component:last-of-type {
-  padding-left: 40px;
+  padding-left: 53px;
 }
 
 .aboutProject_title {
   font-size: 20px;
   line-height: 24px;
+  font-weight: 400;
   letter-spacing: -0.04em;
   color: #FFF;
   margin: 0;
@@ -107,13 +109,14 @@
     padding: 90px 50px;
   }
 
-  .aboutProject_components {
-    display: flex;
-    flex-direction: column;
+  .aboutProject__section__title {
+    font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (768 - 320)));
+    ;
   }
 
+
   .aboutProject_component:last-of-type {
-    padding-left: 30px;
+    padding-left: 37px;
   }
 
   .aboutProject_text {
@@ -124,6 +127,8 @@
 
   .timeTracker {
     padding-top: 93px;
+    grid-template-columns: 140px 4fr;
+
   }
 }
 
@@ -132,8 +137,12 @@
     padding: 70px 18px;
   }
 
+  .aboutProject_components {
+    flex-direction: column;
+  }
+
   .aboutProject_component {
-    padding-top: 60px;
+    padding-top: 63px;
   }
 
   .aboutProject_component:last-of-type {
@@ -173,5 +182,12 @@
     font-size: 11px;
     line-height: 13px;
     padding-top: 10px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .timeTracker {
+    grid-template-columns: 100px 184px;
   }
 }

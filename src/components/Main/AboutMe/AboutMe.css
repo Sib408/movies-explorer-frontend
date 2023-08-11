@@ -30,6 +30,7 @@
 .aboutMe__name {
   line-height: 58px;
   font-size: 50px;
+  font-weight: 400;
   letter-spacing: -0.04em;
   color: #FFF;
   margin: 0;
@@ -123,7 +124,7 @@
   }
 
   .aboutMe__links {
-    padding-top: 87px;
+    padding-top: 68px;
   }
 
   .aboutMe__photo {
@@ -163,7 +164,7 @@
   .aboutMe__description {
     font-size: 11px;
     line-height: 16px;
-    padding-top: 10px;
+    padding-top: 18px;
   }
 
   .aboutMe__text {
@@ -179,6 +180,6 @@
     max-width: 292px;
     max-height: 352px;
     padding-top: 60px;
-    margin: 0 auto;
+
   }
 }
