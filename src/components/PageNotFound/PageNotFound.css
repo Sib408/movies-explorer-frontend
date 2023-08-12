@@ -12,6 +12,7 @@
 .pageNotFound__title {
   font-size: 140px;
   line-height: 169px;
+  font-weight: 400;
   text-align: center;
   color: #FFF;
   margin: 0;
@@ -61,6 +62,7 @@
   .pageNotFound__subtitle {
     font-size: 12px;
     line-height: 15px;
+    padding-top: 10px;
   }
 
   .pageNotFound__link {

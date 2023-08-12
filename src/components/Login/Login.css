@@ -21,16 +21,24 @@
   padding: 15px 178px;
 }
 
+@media screen and (max-width: 768px) {
+  .login {
+    padding-top: calc(56px + (232 - 56) * ((100vw - 320px) / (768 - 320)));
+  }
+}
+
 @media screen and (max-width: 560px) {
 
   .form__field_login {
     width: calc(260px + (396 - 260) * ((100vw - 320px) / (560 - 320)));
     margin: auto;
+    padding-bottom: 310px;
   }
 
   .form__button_login {
     padding: 15px calc(112px + (177 - 112) * ((100vw - 320px) / (560 - 320)));
     margin: auto;
+
   }
 
   .form__text_login {

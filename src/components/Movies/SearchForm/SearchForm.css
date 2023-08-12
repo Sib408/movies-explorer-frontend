@@ -27,6 +27,7 @@
 
 .search__input:focus {
   outline: transparent;
+  border-bottom: 1px solid #4285F4;
 }
 
 .search__input::placeholder {

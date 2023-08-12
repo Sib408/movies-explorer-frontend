@@ -17,6 +17,12 @@
   color: #FFF;
   font-size: 13px;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.nav_tab__link:hover {
+  color: #4285F4;
+
 }
 
 @media screen and (max-width: 424px) {

@@ -12,12 +12,17 @@
   display: block;
 }
 
+.auth__title {
+  margin: 41px 0;
+  font-weight: 400;
+}
+
 .form__field {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 25px;
   margin: 0;
-  padding-bottom: 91px;
+  padding-bottom: 155px;
 }
 
 .form__input_title {
@@ -33,11 +38,14 @@
   max-width: 400px;
   width: 100%;
   color: #fff;
+  font-size: 14px;
+  font-weight: 400;
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #424242;
   padding: 5px 0 10px;
   outline: none;
+  cursor: pointer;
 }
 
 .form__input:focus {
@@ -65,6 +73,7 @@
   color: #8B8B8B;
   text-align: center;
   font-size: 14px;
+  margin-top: 16px;
 }
 
 .form__link {
@@ -74,9 +83,23 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 768px) {
+  .register {
+    padding-top: calc(56px + (232 - 56) * ((100vw - 320px) / (768 - 320)));
+  }
+}
+
 @media screen and (max-width: 560px) {
   .form__button {
     padding: 14px calc(68px + (125 - 68) * ((100vw - 320px) / (560 - 320)));
+  }
+
+  .form__text {
+    font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (560 - 320)));
+  }
+
+  .form__link {
+    font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (560 - 320)));
   }
 }
 
@@ -87,10 +110,14 @@
 
   .auth__title {
     text-align: center;
-    margin: 50px auto 80px;
+    margin: 50px auto 82px;
   }
 
   .form__field {
-    padding-bottom: 237px;
+    padding: 0 0 244px;
+  }
+
+  .form__button {
+    font-size: 12px;
   }
 }
