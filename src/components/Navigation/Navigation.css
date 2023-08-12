@@ -17,12 +17,13 @@
   align-items: center;
   gap: 20px;
   text-align: right;
+  padding-left: 60px;
 }
 
 .naviation__link {
   display: flex;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 13px;
   line-height: 18px;
   text-decoration: none;
   text-align: right;
@@ -31,7 +32,7 @@
 }
 
 .navigation__link_active {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .navigation__login {
