@@ -59,6 +59,10 @@
   cursor: pointer;
 }
 
+.profile__input:invalid {
+  border: 1px solid red;
+}
+
 .profile__input:focus {
   outline: transparent;
   border-bottom: 1px solid #4285F4;

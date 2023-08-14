@@ -48,6 +48,10 @@
   cursor: pointer;
 }
 
+.form__input:invalid {
+  border: 1px solid red;
+}
+
 .form__input:focus {
   border-bottom: 1px solid #4285F4;
 }

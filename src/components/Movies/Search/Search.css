@@ -41,7 +41,7 @@
 }
 
 .search__input:focus::placeholder {
-  opacity: 0;
+  opacity: .3;
 
 }
 
