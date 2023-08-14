@@ -37,7 +37,7 @@
   margin: 0;
 }
 
-.profile__input-title {
+.profile__fields-title {
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
@@ -87,13 +87,13 @@
   padding-top: 216px;
 }
 
-.profile__button {
+.profile__nav-button {
   text-align: center;
   border: none;
   background-color: transparent;
 }
 
-.profile__button_edit {
+.profile__nav-button_edit {
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -102,12 +102,12 @@
   cursor: pointer;
 }
 
-.profile__button_edit:hover {
+.profile__nav-button_edit:hover {
   transition: .3s linear;
   opacity: .5;
 }
 
-.profile__button_signout {
+.profile__nav-button_signout {
   font-size: 13px;
   line-height: 16px;
   font-weight: 500;
@@ -115,7 +115,7 @@
   text-decoration: none;
 }
 
-.profile__button_signout:hover {
+.profile__nav-button_signout:hover {
   transition: .3s linear;
   opacity: .5;
 }
@@ -150,12 +150,12 @@
     padding-top: 376px;
   }
 
-  .profile__button_edit {
+  .profile__nav-button_edit {
     font-size: 12px;
     line-height: 15px;
   }
 
-  .profile__button_signout {
+  .profile__nav-button_signout {
     font-size: 12px;
     line-height: 15px;
   }

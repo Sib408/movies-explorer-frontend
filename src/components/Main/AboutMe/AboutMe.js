@@ -6,8 +6,8 @@ import photo from '../../../images/photo_student.jpg';
 function AboutMe(props) {
   return (
     <section className='aboutMe' id="student">
-      <h2 className='aboutMe__section__title'>Студент</h2>
-      <div className='aboutMe__section__underline'></div>
+      <h2 className='aboutMe__title'>Студент</h2>
+      <div className='aboutMe__underline'></div>
       <div className='aboutMe__components'>
         <div className='aboutMe__info'>
           <h3 className='aboutMe__name'>Виталий</h3>
@@ -22,7 +22,8 @@ function AboutMe(props) {
         </div>
         <img className='aboutMe__photo' src={photo} alt='Фотография' />
       </div>
-    </section>)
+    </section>
+  )
 }
 
 export default AboutMe;

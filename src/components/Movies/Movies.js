@@ -1,13 +1,13 @@
 import React from 'react';
 
-import SearchForm from './SearchForm/SearchForm';
+import Search from './Search/Search';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import moviesList from '../../utils/constans';
 
 const Movies = () => {
   return (
     <main className='movies'>
-      <SearchForm />
+      <Search />
       <MoviesCardList moviesList={moviesList} />
     </main>
 

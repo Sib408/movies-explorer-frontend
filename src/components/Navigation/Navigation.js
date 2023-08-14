@@ -30,11 +30,11 @@ function Navigation() {
   return (
     <nav className='navigation'>
       <div className='navigation__menu'>
-        <Link className="header__logo header__logo_navigation" to='/' />
+        <Link className="header__logo navigation__menu-logo" to='/' />
 
-        <div className='naviation__links'>
-          <Link className='naviation__link navigation__link_active' to='/movies'>Фильмы</Link>
-          <Link className='naviation__link' to='/saved-movies'>Сохранённые фильмы</Link>
+        <div className='navigation__menu-links'>
+          <Link className='navigation__menu-link navigation__menu-link_active' to='/movies'>Фильмы</Link>
+          <Link className='navigation__menu-link' to='/saved-movies'>Сохранённые фильмы</Link>
         </div>
         <Link className="navigation__login" to="/profile">Аккаунт</Link>
         <div className='navigation__burger'>

@@ -12,7 +12,7 @@ function Profile({ name, email }) {
         <form className='profile__form'>
           <fieldset className='profile__fieldset'>
             <label className='profile__fields'>
-              <p className='profile__input-title'>Имя</p>
+              <p className='profile__fields-title'>Имя</p>
               <input className='profile__input'
                 type='text'
                 id='input-name'
@@ -27,7 +27,7 @@ function Profile({ name, email }) {
             </label>
 
             <label className='profile__fields'>
-              <p className='profile__input-title'>E-mail</p>
+              <p className='profile__fields-title'>E-mail</p>
               <input className='profile__input'
                 type='email'
                 name='email'
@@ -40,8 +40,8 @@ function Profile({ name, email }) {
           </fieldset>
 
           <div className='profile__nav'>
-            <button className='profile__button profile__button_edit' type='submit'>Редактировать</button>
-            <Link className='profile__button profile__button_signout' to='/signin'>Выйти из аккаунта</Link>
+            <button className='profile__nav-button profile__nav-button_edit' type='submit'>Редактировать</button>
+            <Link className='profile__nav-button profile__nav-button_signout' to='/signin'>Выйти из аккаунта</Link>
           </div>
 
         </form>

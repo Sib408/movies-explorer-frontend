@@ -6,7 +6,7 @@
   padding: 110px 70px;
 }
 
-.aboutProject__section__title {
+.aboutProject__title {
   font-size: 22px;
   line-height: 27px;
   font-weight: 400;
@@ -16,11 +16,11 @@
   margin: 0;
 }
 
-.aboutProject__section__underline {
+.aboutProject__underline {
   border-bottom: 1px solid rgba(218, 218, 218, 1);
 }
 
-.aboutProject_components {
+.aboutProject__components {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -29,16 +29,16 @@
   margin: 0;
 }
 
-.aboutProject_component {
+.aboutProject__component {
   padding-top: 70px;
   margin: 0;
 }
 
-.aboutProject_component:last-of-type {
+.aboutProject__component:last-of-type {
   padding-left: 53px;
 }
 
-.aboutProject_title {
+.aboutProject__name {
   font-size: 20px;
   line-height: 24px;
   font-weight: 400;
@@ -47,7 +47,7 @@
   margin: 0;
 }
 
-.aboutProject_text {
+.aboutProject__text {
   font-size: 14px;
   line-height: 20px;
   color: #FFF;
@@ -115,11 +115,11 @@
   }
 
 
-  .aboutProject_component:last-of-type {
+  .aboutProject__component:last-of-type {
     padding-left: 37px;
   }
 
-  .aboutProject_text {
+  .aboutProject__text {
     font-size: 12px;
     line-height: 18px;
     padding-top: 22px;
@@ -137,20 +137,20 @@
     padding: 70px 18px;
   }
 
-  .aboutProject_components {
+  .aboutProject__components {
     flex-direction: column;
   }
 
-  .aboutProject_component {
+  .aboutProject__component {
     padding-top: 63px;
   }
 
-  .aboutProject_component:last-of-type {
+  .aboutProject__component:last-of-type {
     padding-top: 56px;
     padding-left: 0px;
   }
 
-  .aboutProject_title {
+  .aboutProject__name {
     font-size: 18px;
     line-height: 22px;
   }
