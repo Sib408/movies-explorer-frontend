@@ -16,7 +16,7 @@ function MoviesCardList({ moviesList }) {
             name={card.nameRU} />
         ))}
       </div>
-      <button className='movieCardList__button' aria-label='Загрузить ещё' type='button'>Ещё</button>
+
     </section>
   );
 };
