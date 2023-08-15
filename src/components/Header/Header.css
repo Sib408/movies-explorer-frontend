@@ -16,6 +16,11 @@
 
 }
 
+.header__logo:hover {
+  transition: .3s linear;
+  opacity: .8;
+}
+
 .header__logo_navigation {
   margin-right: auto;
 

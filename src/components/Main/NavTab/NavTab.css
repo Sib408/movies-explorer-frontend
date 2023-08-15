@@ -21,7 +21,8 @@
 }
 
 .nav_tab__link:hover {
-  color: #4285F4;
+  transition: .3s linear;
+  opacity: .8;
 
 }
 
