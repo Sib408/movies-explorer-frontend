@@ -1,9 +1,9 @@
-.nav_tab {
+.nav-tab {
   background-color: #272727;
   padding: 23px 0;
 }
 
-.nav_tab__list {
+.nav-tab__list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -13,26 +13,32 @@
   padding: 0;
 }
 
-.nav_tab__link {
+.nav-tab__link {
   color: #FFF;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
 }
 
-.nav_tab__link:hover {
+.nav-tab__link:hover {
   transition: .3s linear;
-  opacity: .8;
+  opacity: .7;
 
 }
 
+/* @media screen and (max-width: 768px) {
+  .nav-tab {
+    padding: 24px 0 23px;
+  }
+} */
+
 @media screen and (max-width: 424px) {
-  .nav_tab__list {
+  .nav-tab__list {
     gap: calc(24px + (40 - 24) * ((100vw - 320px) / (424 - 320)));
     ;
   }
 
-  .nav_tab__link {
+  .nav-tab__link {
     font-size: calc(11px + (13 - 11) * ((100vw - 320px) / (424 - 320)));
   }
 }

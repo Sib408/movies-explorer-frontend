@@ -61,7 +61,7 @@
 .card__button:hover {
   -webkit-transition: .6s;
   transition: 0.6s linear;
-  opacity: .6;
+  opacity: .8;
 }
 
 @media screen and (max-width: 768px) {

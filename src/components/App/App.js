@@ -57,10 +57,9 @@ function App() {
             </>}>
             </Route>
 
-            <Route exact path={'*'} element={
-              <>
-                < PageNotFound />
-              </>}>
+            <Route exact path={'*'} element={<>
+              < PageNotFound />
+            </>}>
             </Route>
 
           </Routes>

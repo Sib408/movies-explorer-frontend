@@ -63,7 +63,7 @@
   list-style-type: none;
 }
 
-.techs__item:hover {
+/* .techs__item:hover {
   transition: 0.3s ease;
   opacity: .8;
   background-color: #3DDC84;
@@ -71,7 +71,7 @@
 
 .techs__item:hover .techs__description {
   color: #303030;
-}
+} */
 
 .techs__description {
   font-size: 14px;

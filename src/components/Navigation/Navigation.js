@@ -28,24 +28,24 @@ function Navigation() {
   }, [])
 
   return (
-    <nav className='navigation'>
+    <header className='navigation'>
       <div className='navigation__menu'>
-        <Link className="header__logo navigation__menu-logo" to='/' />
+        <Link className="navigation__logo" to='/' />
 
         <div className='navigation__menu-links'>
           <Link className='navigation__menu-link navigation__menu-link_active' to='/movies'>Фильмы</Link>
           <Link className='navigation__menu-link' to='/saved-movies'>Сохранённые фильмы</Link>
         </div>
         <Link className="navigation__login" to="/profile">Аккаунт</Link>
-        <div className='navigation__burger'>
-          <BurgerMenu
-            isOpen={isBurgerMenuOpen}
-            onClick={openBurgerMenu}
-            onClose={closeBurgerMenu}
-          />
-        </div>
+        {/* <div className='navigation__burger'> */}
+        <BurgerMenu
+          isOpen={isBurgerMenuOpen}
+          onClick={openBurgerMenu}
+          onClose={closeBurgerMenu}
+        />
       </div>
-    </nav>
+      {/* </div> */}
+    </header>
   )
 }
 

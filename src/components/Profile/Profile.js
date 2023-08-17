@@ -19,8 +19,8 @@ function Profile({ name, email }) {
                 name='name'
                 value={name}
                 placeholder='Имя'
-                minLength={2}
-                maxLength={30}
+                minLength="2"
+                maxLength="30"
                 defaultValue={'Виталий'}
                 required />
 
@@ -34,6 +34,8 @@ function Profile({ name, email }) {
                 id='input-email'
                 value={email}
                 placeholder='E-mail'
+                minLength="2"
+                maxLength="40"
                 defaultValue={'pochta@yandex.ru'}
                 required />
             </label>

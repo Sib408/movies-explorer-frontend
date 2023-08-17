@@ -15,28 +15,40 @@ function Login(onLogin) {
   }
 
   return (
-    <section className="login">
-      <div className='login__container'>
-        <Link className="header__logo header__logo_register" to='/' />
-        <AuthForm className="form" title={'Рады видеть!'} name={'login'} onSubmit={handleSubmit}>
+    <section className="form form_login">
+      <div className='form__container form__container_login'>
+        <Link className="form__logo form__logo_login" to='/' />
+        <AuthForm title={'Рады видеть!'} name={'login'} onSubmit={handleSubmit}>
           <div className="form__field form__field_login">
 
             <label >
               <span className="form__title">Email</span>
-              <input className="form__input form__input_type_auth" type="email" placeholder="Email" id="email"
+              <input className="form__input form__input_type_auth"
+                type="email"
+                placeholder="Email"
+                id="email"
                 name="email"
-                minLength="2" maxLength="40" required />
+                minLength="2"
+                maxLength="40"
+                required />
             </label>
 
             <label>
               <span className="form__title">Пароль</span>
-              <input className="form__input form__input_type_auth" type="password" placeholder="Пароль" id="password"
-                name="password" minLength="6" maxLength="200" required />
+              <input className="form__input form__input_type_auth"
+                type="password"
+                placeholder="Пароль"
+                id="password"
+                name="password"
+                minLength="6"
+                maxLength="200"
+                required />
             </label>
           </div>
+          <button className={"form__button form__button_login form__button_type_save-auth"} type="submit">Войти</button>
+          <p className={"form__text form__text_login"}>Еще не зарегистрированы? <Link className={"form__link form__link_login"} to={'/signup'}>Регистрация</Link></p>
         </AuthForm>
-        <button className={"form__button form__button_login form__button_type_save-auth"} type="submit">Войти</button>
-        <p className={"form__text form__text_login"}>Еще не зарегистрированы? <Link className={"form__link form__link_login"} to={'/signup'}>Регистрация</Link></p>
+
       </div>
     </section>
 

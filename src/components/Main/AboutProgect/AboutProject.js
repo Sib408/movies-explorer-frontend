@@ -28,7 +28,8 @@ function AboutProject() {
           <p className='timeTracker__text'>Front-end</p>
         </li>
       </ul>
-    </section>)
+    </section>
+  )
 }
 
 export default AboutProject;

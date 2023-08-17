@@ -28,7 +28,7 @@
   margin: 0;
 }
 
-.footer_links {
+.footer__links {
   display: flex;
   justify-content: center;
   list-style: none;
@@ -47,7 +47,7 @@
 
 .footer__link:hover {
   transition: 0.3s linear;
-  opacity: .8;
+  opacity: .7;
 }
 
 
@@ -83,7 +83,7 @@
     padding-top: 30px;
   }
 
-  .footer_links {
+  .footer__links {
     padding: 0;
     flex-direction: column;
     text-align: center;
