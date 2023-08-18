@@ -4,7 +4,7 @@ import './Error.css'
 
 function Error() {
   return (
-    <span className='error error__visible'>Что-то пошло не так...</span>
+    <span className='error error_visible'>Что-то пошло не так...</span>
   )
 
 }

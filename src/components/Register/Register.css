@@ -1,4 +1,4 @@
-.register {
+.form_register {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,22 @@
 
 }
 
-.header__logo_register {
+.form__logo {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: center no-repeat url('../../images/logo.svg');
+  cursor: pointer;
+  transition: background-size .1s ease-out;
+
+}
+
+.form__logo:hover {
+  transition: .3s linear;
+  opacity: .8;
+}
+
+.form__logo_register {
   display: block;
 }
 
@@ -69,6 +84,11 @@
   cursor: pointer;
 }
 
+.form__button:hover {
+  transition: .3s linear;
+  opacity: .8;
+}
+
 .form__text {
   color: #8B8B8B;
   text-align: center;
@@ -83,8 +103,13 @@
   text-decoration: none;
 }
 
+.form__link:hover {
+  transition: .3s linear;
+  opacity: .7;
+}
+
 @media screen and (max-width: 768px) {
-  .register {
+  .form_register {
     padding-top: calc(56px + (232 - 56) * ((100vw - 320px) / (768 - 320)));
   }
 }
@@ -104,7 +129,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .header__logo_register {
+  .form__logo_register {
     margin: auto;
   }
 

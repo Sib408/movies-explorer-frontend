@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #202020;
+  /* background-color: #202020; */
   padding: 18px 70px 18px;
 }
 
@@ -12,8 +12,20 @@
   width: 100%;
 }
 
-.navigation__menu-logo {
+.navigation__logo {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: center no-repeat url('../../images/logo.svg');
+  cursor: pointer;
+  transition: background-size .1s ease-out;
   margin-right: auto;
+
+}
+
+.navigation__logo:hover {
+  transition: .3s linear;
+  opacity: .8;
 }
 
 .navigation__menu-links {
@@ -38,7 +50,7 @@
 
 .navigation__menu-link:hover {
   transition: 0.8 linear;
-  opacity: .8;
+  opacity: .7;
 }
 
 .navigation__menu-link_active {
@@ -60,7 +72,7 @@
 
 .navigation__login:hover {
   transition: 0.8 linear;
-  opacity: .8;
+  opacity: .7;
 
 }
 

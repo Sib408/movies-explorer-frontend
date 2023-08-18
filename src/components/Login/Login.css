@@ -1,4 +1,4 @@
-.login {
+.form_login {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.header__logo_register {
+.form__logo_login {
   display: block;
 }
 
@@ -22,7 +22,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .login {
+  .form_login {
     padding-top: calc(56px + (232 - 56) * ((100vw - 320px) / (768 - 320)));
   }
 }
@@ -47,5 +47,11 @@
 
   .form__link_login {
     font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (560 - 320)));
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .form__logo_login {
+    margin: 0 auto;
   }
 }

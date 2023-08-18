@@ -23,27 +23,43 @@ function Register({ onRegister }) {
   }
 
   return (
-    <section className="register">
-      <div className='register__container'>
-        <Link className="header__logo header__logo_register" to='/' />
+    <section className="form form_register">
+      <div className='form__container form__container_register'>
+        <Link className="form__logo form__logo_register" to='/' />
 
         <AuthForm title={'Добро пожаловать!'} name={'register'} onSubmit={handleSubmit}>
           <div className="form__field">
             <label>
               <span className="form__title">Имя</span>
-              <input className="form__input form__input_type_auth" type="text" name="name" placeholder="Имя" minLength="2" required defaultValue={'Виталий'} />
+              <input className="form__input form__input_type_auth" type="text" name="name" placeholder="Имя"
+                minLength="2"
+                maxLength="30"
+                required
+                defaultValue={'Виталий'} />
             </label>
             <label >
               <span className="form__title">Email</span>
-              <input className="form__input form__input_type_auth" type="email" placeholder="Email" id="email"
-                name="email" defaultValue={'pochta@yandex.ru'}
-                minLength="2" maxLength="40" required />
+              <input className="form__input form__input_type_auth"
+                type="email"
+                placeholder="Email"
+                id="email"
+                name="email"
+                defaultValue={'pochta@yandex.ru'}
+                minLength="2"
+                maxLength="40"
+                required />
             </label>
 
             <label>
               <span className="form__title">Пароль</span>
-              <input className="form__input form__input_password form__input_type_auth" type="password" placeholder="Пароль" id="password"
-                name="password" minLength="6" maxLength="200" required />
+              <input className="form__input form__input_password form__input_type_auth"
+                type="password"
+                placeholder="Пароль"
+                id="password"
+                name="password"
+                minLength="6"
+                maxLength="200"
+                required />
               <Error />
             </label>
           </div>

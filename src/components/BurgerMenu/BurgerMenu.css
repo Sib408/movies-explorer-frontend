@@ -1,13 +1,14 @@
-.burger-menu__visible {
+.burger-menu__click {
   display: none;
   max-width: 44px;
   height: 44px;
   width: 100%;
   border: none;
   background: center / contain no-repeat transparent url(../../images/burger.svg);
+  cursor: pointer;
 }
 
-.burger-menu__visible:hover {
+.burger-menu__click:hover {
   transition: .8 ease;
   opacity: .8;
 }
@@ -16,7 +17,7 @@
   display: none;
 }
 
-.burger-menu {
+.burger-menu__inner {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -74,7 +75,7 @@
 
 .burger-menu__link:hover {
   transition: 0.8 linear;
-  opacity: .8;
+  opacity: .7;
 }
 
 .burger-menu__link_active {
@@ -109,7 +110,7 @@
 
 .burger-menu__login:hover {
   transition: 0.8 linear;
-  opacity: .8;
+  opacity: .7;
 }
 
 @media screen and (max-width: 768px) {
@@ -122,7 +123,7 @@
 }
 
 @media screen and (max-width: 424px) {
-  .burger-menu {
+  .burger-menu__click {
     width: 100vw;
   }
 

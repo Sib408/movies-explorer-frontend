@@ -104,7 +104,7 @@
 
 .profile__nav-button_edit:hover {
   transition: .3s linear;
-  opacity: .5;
+  opacity: .8;
 }
 
 .profile__nav-button_signout {
@@ -117,7 +117,7 @@
 
 .profile__nav-button_signout:hover {
   transition: .3s linear;
-  opacity: .5;
+  opacity: .8;
 }
 
 @media screen and (max-width: 768px) {

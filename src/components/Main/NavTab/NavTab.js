@@ -2,27 +2,27 @@ import './NavTab.css';
 
 function NavTab() {
   return (
-    <section className="nav_tab">
+    <section className="nav-tab">
 
-      <ul className="nav_tab__list">
+      <ul className="nav-tab__list">
         <li>
           <a
             href="#project"
-            className="nav_tab__link">
+            className="nav-tab__link">
             О проекте
           </a>
         </li>
         <li>
           <a
             href="/#techs"
-            className="nav_tab__link">
+            className="nav-tab__link">
             Технологии
           </a>
         </li>
         <li>
           <a
             href="/#student"
-            className="nav_tab__link">
+            className="nav-tab__link">
             Студент
           </a>
         </li>
