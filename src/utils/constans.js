@@ -1,4 +1,21 @@
 import poster from '../images/movies_cards/pic__33words.jpg';
+export const MAIN_API = {
+  // baseUrl: 'https://sib408.movies.nomoredomains.xyz',
+  baseUrl: 'http://localhost:3000',
+  headers: {
+    authorization: 'ade24f25-d7dd-4edc-be9d-87af9f2eb31d',
+    'Content-Type': 'application/json'
+  }
+}
+
+export const MOVIES_API = {
+  baseUrl: 'https://api.nomoreparties.co',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
+
 const moviesList = [
   {
     country: 'Россия',
