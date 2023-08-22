@@ -1,4 +1,4 @@
-import { MAIN_API, MOVIES_API } from './constants.js'
+import { MOVIES_API } from "./constans";
 
 export class MainApi {
   constructor({ baseUrl, headers }) {
@@ -13,33 +13,38 @@ export class MainApi {
     }
   }
 
-  getRegistrateUser({ name, email, password }) {
+  register(values) {
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
+        name: values.name,
+        email: values.email,
+        password: values.password,
       })
     })
-      .then(this._checkServerResponse);
-  }
+      .then((res) => this._checkServerResponse);
+  };
 
-  getLoginUser({ email, password }) {
+
+  login(values) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      headers: this._headers,
-      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // credentials: 'include',
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email: values.email,
+        password: values.password,
       })
     })
-      .then(this._checkServerResponse);
+      .then((res) => this._checkServerResponse);
   }
 
-  getLogoutUser() {
+  loginOut() {
     return fetch(`${this._baseUrl}/signout`, {
       method: 'GET',
       credentials: 'include',
@@ -122,4 +127,6 @@ export class MainApi {
 
 }
 
-export const mainApi = new MainApi(MAIN_API);
+export const mainApi = new MainApi({
+  baseUrl: 'http://localhost:3001',
+});

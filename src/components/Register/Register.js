@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Error from '../Error/Error';
 import AuthForm from '../AuthForm/AuthForm';
+import useFormValidation from '../../hooks/useFormValidator';
+
 
 import './Register.css'
 
-function Register({ onRegister }) {
-  const [email] = useState('');
-  const [password] = useState('');
+function Register({ onRegister, registerError }) {
 
-  // function handleEmail(evt) {
-  //   setEmail(evt.target.value)
-  // }
-
-  // function handlePassword(evt) {
-  //   setPassword(evt.target.value)
-  // }
+  const { values, handleChange, errors, isValid, resetForm } = useFormValidation();
+  useEffect(() => {
+    resetForm({}, {}, false);
+  }, [resetForm]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onRegister(password, email)
+    onRegister(values)
   }
 
   return (
@@ -31,28 +28,38 @@ function Register({ onRegister }) {
           <div className="form__field">
             <label>
               <span className="form__title">Имя</span>
-              <input className="form__input form__input_type_auth" type="text" name="name" placeholder="Имя"
+              <input className="form__input form__input_type_auth"
+                value={values.name || ""}
+                onChange={handleChange}
+                type="text"
+                name="name"
+                placeholder="Имя"
                 minLength="2"
                 maxLength="30"
                 required
-                defaultValue={'Виталий'} />
+              />
+              <Error errorMessage={errors.name} />
+
             </label>
             <label >
               <span className="form__title">Email</span>
               <input className="form__input form__input_type_auth"
+                value={values.email || ''} onChange={handleChange}
                 type="email"
                 placeholder="Email"
                 id="email"
                 name="email"
-                defaultValue={'pochta@yandex.ru'}
+                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                 minLength="2"
                 maxLength="40"
                 required />
+              <Error errorMessage={errors.email} />
             </label>
 
             <label>
               <span className="form__title">Пароль</span>
               <input className="form__input form__input_password form__input_type_auth"
+                value={values.password || ''} onChange={handleChange}
                 type="password"
                 placeholder="Пароль"
                 id="password"
@@ -60,12 +67,14 @@ function Register({ onRegister }) {
                 minLength="6"
                 maxLength="200"
                 required />
-              <Error />
+              <Error errorMessage={errors.password} />
             </label>
           </div>
 
-
-          <button className={"form__button form__button_type_save-auth"} type="submit" >Зарегистрироваться</button>
+          <Error errorMessage={registerError} />
+          <button className={"form__button form__button_type_save-auth"} type="submit" disabled={!isValid}
+            style={!isValid ?
+              { backgroundColor: '#4285F4', opacity: '.8' } : null} >Зарегистрироваться</button>
           <p className={"form__text"}>Уже зарегистрированы? <Link className={"form__link"} to={'/signin'}>Войти</Link></p>
 
         </AuthForm>
