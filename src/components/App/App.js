@@ -31,42 +31,36 @@ function App() {
   const [loginError, setLoginError] = useState('');
   const [profileMessage, setProfileMessage] = useState('');
 
+
   useEffect(() => {
     handleTokenCheck();
+    mainApi
+      .getUserInfo()
+      .then((res) => {
+        setCurrentUser(res);
+        // setCards(cards);
+      })
+      .catch((err) => console.log(err));
+
   }, [loggedIn])
 
-  const handleTokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
+  const handleTokenCheck = (token) => {
+    // const token = localStorage.getItem('jwt');
+    if (token) {
       mainApi
-        .getUserInfo(jwt)
+        .getContent(token)
+        .getUserInfo(token)
         .then((res) => {
           if (res) {
-            setLoggedIn(true)
-            setCurrentUser(res)
+            // setUserInfo({ email: res.email });
+            setCurrentUser(res);
+            setLoggedIn(true);
             navigate(location)
           }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
     }
   }
-  // const handleTokenCheck = () => {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     mainApi
-  //       .getUserInfo(jwt)
-  //       .then((res) => {
-  //         if (res) {
-  //           setLoggedIn(true)
-  //           setCurrentUser(res)
-  //           navigate(location)
-  //         }
-  //       })
-  //       .catch((err) => console.log(err))
-  //   }
-  // }
-
-
 
   function handleRegister(user) {
     mainApi
@@ -97,11 +91,13 @@ function App() {
       .then((res) => {
         if (res) {
           localStorage.setItem('jwt', res.token);
+          setCurrentUser(res);
           setLoggedIn(true);
           navigate('/movies');
         }
       })
       .catch((err) => {
+
         if (err === 'Ошибка: 401') {
           setLoginError('Неправильный логин или пароль');
         }
@@ -115,9 +111,9 @@ function App() {
   }
 
   function handleUpdateUser(user) {
-    const token = localStorage.getItem('jwt');
+    // const token = localStorage.getItem('jwt');
     mainApi
-      .editProfile(user, token)
+      .updateUserInfo(user)
       .then((updateUser) => {
         setLoggedIn(true);
         setCurrentUser(updateUser);
@@ -136,6 +132,9 @@ function App() {
 
   const handleLogout = () => {
     localStorage.clear();
+    setLoggedIn(false);
+    // localStorage.removeItem('jwt');
+    // setCurrentUser('');
     navigate('/');
     console.log(localStorage, 'localstorage')
   };
@@ -148,7 +147,7 @@ function App() {
           <Routes>
 
             <Route exact path={'/'} element={<>
-              <Header />
+              <Header loggedIn={loggedIn} />
               <Main />
               <Footer />
             </>}>
@@ -180,6 +179,7 @@ function App() {
                 </>
 
               </ProtectedRoute>
+
             }>
             </Route>
 

@@ -41,6 +41,7 @@ function Login({ onLogin, loginError }) {
                 required />
               <Error errorMessage={errors.email} />
             </label>
+            <span className='profile__error'>{errors.name || ''}</span>
 
             <label>
               <span className="form__title">Пароль</span>
@@ -57,11 +58,13 @@ function Login({ onLogin, loginError }) {
               <Error errorMessage={errors.password} />
             </label>
           </div>
-          <Error errorMessage={loginError} />
-          <button className={"form__button form__button_login form__button_type_save-auth"} type="submit" disabled={!isValid}
-            style={!isValid ?
-              { backgroundColor: '#4285F4', opacity: '.5' } : null}>Войти</button>
-          <p className={"form__text form__text_login"}>Еще не зарегистрированы? <Link className={"form__link form__link_login"} to={'/signup'}>Регистрация</Link></p>
+          <div className="form__nav">
+            <Error errorMessage={loginError} />
+            <button className={"form__button form__button_login form__button_type_save-auth"} type="submit" disabled={!isValid}
+              style={!isValid ?
+                { backgroundColor: '#4285F4', opacity: '.5' } : null}>Войти</button>
+            <p className={"form__text form__text_login"}>Еще не зарегистрированы? <Link className={"form__link form__link_login"} to={'/signup'}>Регистрация</Link></p>
+          </div>
         </AuthForm>
 
       </div>

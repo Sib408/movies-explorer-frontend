@@ -25,7 +25,8 @@ export class MainApi {
         password: values.password,
       })
     })
-      .then((res) => this._checkServerResponse);
+      .then(this._checkServerResponse);
+
   };
 
 
@@ -35,13 +36,17 @@ export class MainApi {
       headers: {
         "Content-Type": "application/json"
       },
-      // credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify({
         email: values.email,
         password: values.password,
       })
     })
-      .then((res) => this._checkServerResponse);
+      .then(this._checkServerResponse)
+      .then((data) => {
+        localStorage.setItem('jwt', data.token)
+        return data;
+      });
   }
 
   loginOut() {
@@ -54,8 +59,12 @@ export class MainApi {
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json"
+      },
       credentials: 'include',
-      headers: this._headers
+
     })
       .then(this._checkServerResponse);
   }
@@ -63,7 +72,9 @@ export class MainApi {
   updateUserInfo({ name, email }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json"
+      },
       credentials: 'include',
       body: JSON.stringify({
         name: name,
@@ -125,7 +136,20 @@ export class MainApi {
       .then(this._checkServerResponse);
   };
 
+
+  getContent = (token) => {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+
+      }
+    })
+      .then(this._checkServerResponse);
+  }
 }
+
 
 export const mainApi = new MainApi({
   baseUrl: 'http://localhost:3001',

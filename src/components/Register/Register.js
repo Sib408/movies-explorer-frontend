@@ -70,13 +70,13 @@ function Register({ onRegister, registerError }) {
               <Error errorMessage={errors.password} />
             </label>
           </div>
-
-          <Error errorMessage={registerError} />
-          <button className={"form__button form__button_type_save-auth"} type="submit" disabled={!isValid}
-            style={!isValid ?
-              { backgroundColor: '#4285F4', opacity: '.8' } : null} >Зарегистрироваться</button>
-          <p className={"form__text"}>Уже зарегистрированы? <Link className={"form__link"} to={'/signin'}>Войти</Link></p>
-
+          <div className="form__nav">
+            <Error errorMessage={registerError} />
+            <button className={"form__button form__button_type_save-auth"} type="submit" disabled={!isValid}
+              style={!isValid ?
+                { backgroundColor: '#4285F4', opacity: '.5' } : null} >Зарегистрироваться</button>
+            <p className={"form__text"}>Уже зарегистрированы? <Link className={"form__link"} to={'/signin'}>Войти</Link></p>
+          </div>
         </AuthForm>
       </div>
     </section>

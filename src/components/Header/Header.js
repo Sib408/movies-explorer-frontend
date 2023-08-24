@@ -18,7 +18,8 @@ function Header({ loggedIn }) {
               <Link className='header__login' to='/signin'>Войти</Link>
             </nav>
           </header>
-        </>)}
+        </>
+      )}
     </>
   )
 }
