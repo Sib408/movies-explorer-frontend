@@ -38,6 +38,7 @@ export
     toggleShortMovie: 'toggleSM'
   }
 
+export const SHORT_MOVIE = 40;
 const moviesList = [
   {
     country: 'Россия',
