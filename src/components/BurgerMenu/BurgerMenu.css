@@ -79,9 +79,21 @@
 }
 
 .burger-menu__link_active {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 9px;
   text-decoration-thickness: 2px;
+}
+
+.burger-menu__link_active:hover {
+  transition: 0.8 linear;
+  opacity: .7;
 }
 
 .burger-menu__footer {
@@ -109,6 +121,28 @@
 }
 
 .burger-menu__login:hover {
+  transition: 0.8 linear;
+  opacity: .7;
+}
+
+.burger-menu__login_active {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FFFFFF;
+  background: #313131;
+  border-radius: 20px;
+  padding: 8px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 9px;
+  text-decoration-thickness: 2px;
+}
+
+.burger-menu__login_active:hover {
   transition: 0.8 linear;
   opacity: .7;
 }

@@ -106,7 +106,7 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
                 required />
             </label>
             <span className='profile__error'>{errors.email || ''}</span>
-            <span className="profile__error-text">{profileMessageText}</span>
+            <span className="profile__message">{profileMessageText}</span>
           </fieldset>
 
           <div className='profile__nav'>

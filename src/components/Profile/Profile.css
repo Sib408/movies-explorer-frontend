@@ -74,6 +74,15 @@
   font-weight: 400;
 }
 
+.profile__message {
+  color: #4285F4;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: center;
+  margin-top: 192px;
+}
+
 .profile__fields {
   display: flex;
   justify-content: space-between;

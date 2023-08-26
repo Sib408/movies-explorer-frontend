@@ -1,4 +1,4 @@
-import { MOVIES_API } from "./constans";
+// import { MOVIES_API } from "./constans";
 
 export class MainApi {
   constructor({ baseUrl, headers }) {
@@ -87,54 +87,42 @@ export class MainApi {
   getSavedMovies() {
     return fetch(`${this._baseUrl}/movies`, {
       credentials: 'include',
-      headers: this._headers
+      headers: {
+        "Content-Type": "application/json"
+      },
     })
       .then(this._checkServerResponse);
   }
 
-  postNewSavedMovie(movieData) {
-    const {
-      country,
-      director,
-      duration,
-      year,
-      description,
-      image,
-      trailerLink,
-      id,
-      nameRU,
-      nameEN,
-    } = movieData;
-
+  saveMovie({ data }) {
     return fetch(`${this._baseUrl}/movies`, {
-      method: 'POST',
-      headers: this._headers,
-      credentials: 'include',
-      body: JSON.stringify({
-        country,
-        director,
-        duration,
-        year,
-        description,
-        image: MOVIES_API.baseUrl + image.url,
-        trailerLink,
-        thumbnail: MOVIES_API.baseUrl + image.formats.thumbnail.url,
-        movieId: id,
-        nameRU,
-        nameEN,
-      })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ data })
     })
-      .then(this._checkServerResponse);
-  };
+      .then(this._checkServerResponse)
+  }
 
-  deleteSavedMovie(movie) {
-    return fetch(`${this._baseUrl}/movies/${movie._id}`, {
-      method: 'DELETE',
-      credentials: 'include',
-      headers: this._headers,
+  // getSavedMovies() {
+  //   return fetch(`${this._baseUrl}/movies`, {
+  //     method: 'GET',
+  //     credentials: 'include',
+  //     headers: this._headers,
+  //   })
+  //     .then(this._checkServerResponse)
+  // }
+
+  deleteMovie(id) {
+    return fetch(`${this._baseUrl}/movies/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
     })
-      .then(this._checkServerResponse);
-  };
+      .then(this._checkServerResponse)
+  }
 
 
   getContent = (token) => {

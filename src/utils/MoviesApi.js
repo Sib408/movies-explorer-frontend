@@ -1,9 +1,9 @@
-import { MOVIES_API } from './constans'
+// import { MOVIES_API } from './constans'
+import { MOVIE_LINK } from './constans'
 
 class MoviesApi {
-  constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+  constructor({ baseUrl }) {
+    this._baseUrl = baseUrl;
   }
 
   _checkServerResponse(res) {
@@ -16,10 +16,20 @@ class MoviesApi {
 
   getMovies() {
     return fetch(`${this._baseUrl}/beatfilm-movies`, {
-      headers: this._headers
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
     })
-      .then(this._checkServerResponse);
-  };
+      .then(this._checkServerResponse)
+  }
 }
 
-export const moviesApi = new MoviesApi(MOVIES_API);
+// export const moviesApi = new MoviesApi(MOVIES_API);
+
+
+const moviesApi = new MoviesApi({
+  baseUrl: `${MOVIE_LINK}`,
+});
+
+export default moviesApi;

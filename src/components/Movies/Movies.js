@@ -3,12 +3,11 @@ import React from 'react';
 import Search from './Search/Search';
 import Preloader from './Preloader/Preloader'
 import MoviesCardList from './MoviesCardList/MoviesCardList';
-// import moviesList from '../../utils/constans';
+
 
 import './Movies.css';
 
-const Movies = ({
-  onSearch,
+function Movies({ onSearch,
   loading,
   isSearchDone,
   searchStatus,
@@ -17,12 +16,13 @@ const Movies = ({
   onSaveMovie,
   onDeleteMovie,
   moreLoadingButton,
-  onRenderMovies,
-}) => {
+  onRenderMovies, }) {
+
+
   return (
     <main className='movies'>
-
-      <Search onSearch={onSearch} />
+      <Search
+        onSearch={onSearch} />
       {loading ?
         <div className="movies__preloader">
           <Preloader />
@@ -30,6 +30,7 @@ const Movies = ({
         : isSearchDone
           ? renderedMovies.length > 0
             ? <MoviesCardList
+              // movies={movies}
               movies={renderedMovies}
               savedMovies={savedMovies}
               onSaveMovie={onSaveMovie}
@@ -39,7 +40,6 @@ const Movies = ({
               onRenderMovies={onRenderMovies}
               moreLoadingButton={moreLoadingButton}
             />
-            // <MoviesCardList moviesList={moviesList} />
             : (!loading ?
               <div className="movies__container">
                 <span className="movies__text">Ничего не найдено</span>
@@ -51,7 +51,7 @@ const Movies = ({
             )
           : ("")
       }
-      {/* <button className='movies__button' aria-label='Загрузить ещё' type='button'>Ещё</button> */}
+
     </main>
 
   );

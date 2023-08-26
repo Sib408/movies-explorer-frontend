@@ -12,24 +12,21 @@ function MoviesCardList({ movies,
   isSearchDone,
   onRenderMovies,
   moreLoadingButton, }) {
+  const moreLoadingButtonClass = moreLoadingButton ? `movieCardList__button` : `movieCardList__button-hidden`;
 
-  const moreLoadingButtonClass = moreLoadingButton ? `moviesList__button` : `moviesList__button-hidden`;
+
 
   return (
     <section className='movieCardList'>
       <div className='movieCardList__container'>
         {movies.map((movie) => (
           <MoviesCard
-            // key={card.movieId}
-            // movieId={card.movieId}
-            // duration={card.duration}
-            // image={card.image}
-            // name={card.nameRU}
-            // movie={movie}
+            movie={movie}
             key={movie._id || movie.id}
             savedMovies={savedMovies}
             onSaveMovie={onSaveMovie}
-            onDeleteMovie={onDeleteMovie} />
+            onDeleteMovie={onDeleteMovie}
+          />
         ))}
       </div>
       {!loading ? isSearchDone
@@ -43,9 +40,7 @@ function MoviesCardList({ movies,
         : ("")
         : ("")
       }
-
     </section>
   );
 };
-
 export default MoviesCardList;
