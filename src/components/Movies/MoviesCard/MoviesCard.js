@@ -8,11 +8,11 @@ import baseLikeIcon from '../../../images/baseLike.svg';
 import activeLikeIcon from '../../../images/activeLike.svg';
 import deleteButton from '../../../images/delete_card.svg';
 
-const MoviesCard = ({ movie, savedMovies, onSaveMovie, onDeleteMovie }) => {
+function MoviesCard({ movie, savedMovies, onSaveMovie, onDeleteMovie }) {
   const location = useLocation();
   const savedMovie = savedMovies.find((m) => m.movieId === movie.id);
 
-  //const isSaved = movie.id ? savedMovie : location.pathname === '/saved-movies' ? true : '';
+
   const isSaved = movie.id ? savedMovie : location.pathname === '/saved-movies'
 
   //длительность фильма

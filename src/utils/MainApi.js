@@ -94,29 +94,47 @@ export class MainApi {
       .then(this._checkServerResponse);
   }
 
-  saveMovie({ data }) {
-    return fetch(`${this._baseUrl}/movies`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ data })
-    })
-      .then(this._checkServerResponse)
-  }
-
-  // getSavedMovies() {
+  // saveMovie({ data }) {
   //   return fetch(`${this._baseUrl}/movies`, {
-  //     method: 'GET',
+  //     method: "POST",
   //     credentials: 'include',
-  //     headers: this._headers,
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({ data })
   //   })
   //     .then(this._checkServerResponse)
   // }
 
+  saveMovie(movie) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        // image: `https://api.nomoreparties.co/${movie.image.url}`,
+        image: movie.image,
+        trailerLink: movie.trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${movie.thumbnail}`,
+        movieId: movie.movieId,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+      })
+    })
+      .then(this._checkServerResponse)
+  }
+
   deleteMovie(id) {
     return fetch(`${this._baseUrl}/movies/${id}`, {
       method: "DELETE",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json"
       },

@@ -3,10 +3,11 @@ import Search from "../Movies/Search/Search";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Preloader from '../Movies/Preloader/Preloader'
 import shortsFilter from "../../utils/shortsFilter";
-// import { savedMoviesList } from "../../utils/constans";
+
 import './SavedMovies.css';
 
 function SavedMovies({ savedMovies, onDeleteMovie }) {
+
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
   const [request, setRequest] = useState('');
   const [checkboxStatus, setCheckboxStatus] = useState(false);
@@ -21,11 +22,13 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
     setRequest(request);
     setCheckboxStatus(checkboxStatus);
     setIsSearchDone(true);
+
     function startLoading() {
       setLoading(true);
       setTimeout(() => setLoading(false), 700);
     }
   }
+
   useEffect(() => {
     if (filteredSavedMovies.length > 0) {
       const searchResult = shortsFilter(savedMovies, request, checkboxStatus);
@@ -34,8 +37,10 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
   }, [savedMovies]);
 
   return (
-    <main className="savedMovies">
-      <Search onSearch={handleSearchSavedMovie} />
+    <main className='savedMovies'>
+      <Search
+        onSearch={handleSearchSavedMovie}
+      />
       {loading ?
         <div className="savedMovies__preloader">
           <Preloader />
@@ -44,10 +49,10 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
           ? filteredSavedMovies.length > 0
             ?
             <MoviesCardList
-              // moviesList={savedMoviesList}
               movies={filteredSavedMovies}
               savedMovies={savedMovies}
-              onDeleteMovie={onDeleteMovie} />
+              onDeleteMovie={onDeleteMovie}
+            />
             : (
               <div className="savedMovies__container">
                 <span className="savedMovies__text">Ничего не найдено</span>
@@ -61,6 +66,7 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
             />
           )
       }
+
     </main>
   )
 }

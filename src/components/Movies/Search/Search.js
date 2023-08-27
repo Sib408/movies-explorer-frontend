@@ -21,7 +21,7 @@ function Search({ onSearch }) {
 
       if (search) {
         setRequest(search);
-        //setDisabled(!disabled);
+
       }
       if (JSON.parse(checkbox) === true) {
         setCheckboxStatus(true);
@@ -66,7 +66,7 @@ function Search({ onSearch }) {
             onChange={handleRequestChange}
             required />
         </form>
-        <button className="search__button" type="submit" aria-label="поиск" onChange={handleRequestChange} onSubmit={handleSubmit}>Найти</button>
+        <button className="search__button" type="submit" aria-label="поиск">Найти</button>
       </div>
       <Checkbox
         checkboxStatus={checkboxStatus}

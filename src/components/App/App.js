@@ -17,8 +17,6 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotfound";
 import Navigation from '../Navigation/Navigation';
-
-
 import ProtectedRoute from '../ProtectedRoute/ProtecterRoute';
 
 import { mainApi } from "../../utils/MainApi";
