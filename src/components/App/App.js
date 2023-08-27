@@ -3,9 +3,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Route, Routes } from "react-router-dom";
 import CurrentUserContext from "../../utils/context/CurrentUserContext";
-import shortsFilter from '../../utils/shortsFilter'
+
 import './App.css';
-import useCurrentWidth from '../../hooks/useCurrentWidth';
+
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -21,24 +21,14 @@ import ProtectedRoute from '../ProtectedRoute/ProtecterRoute';
 
 import { mainApi } from "../../utils/MainApi";
 // import { moviesApi } from "../../utils/MoviesApi";
-import moviesApi from "../../utils/MoviesApi";
-import {
-  SCREEN_SIZE_MOBILE,
-  INITIAL_MOVIES_MOBILE,
-  LOAD_MORE_TABLET_MOBILE,
-  SCREEN_SIZE_TABLET,
-  INITIAL_MOVIES_TABLET,
-  SCREEN_SIZE_DESTOP,
-  INITIAL_MOVIES_DESTOP,
-  LOAD_MORE_DESKTOP
-} from '../../utils/constans';
+// import moviesApi from "../../utils/MoviesApi";
 
 
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
-  const width = useCurrentWidth();
+  // const width = useCurrentWidth();
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
@@ -47,22 +37,11 @@ function App() {
   const [loginError, setLoginError] = useState('');
   const [profileMessage, setProfileMessage] = useState('');
 
-  //все фильмы - по умолчанию пустой массив
-  const [renderedMovies, setRenderedMovies] = useState([]);
-  const [initialMovies, setInitialMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
-  const [firstMovies, setFirstMovies] = useState(0);
-  const [moreMovies, setMoreMovies] = useState(0);
-
-  // //фильмы из api, сохраненные
   const [savedMovies, setSavedMovies] = useState([]);
+  // const [isInfoMessageOpen, setIsInfoMessageOpen] = useState(false);
+  // const [textIfnoMessage, setTextInfoMessage] = useState('');
+  // const [isLoading, setIsLoading] = useState(false);
 
-  const [searchStatus, setSearchStatus] = useState('');
-  const [isSearchDone, setIsSearchDone] = useState(false);
-  const [request, setRequest] = useState('');
-  const [checkboxStatus, setCheckboxStatus] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [moreLoadingButton, setMoreLoadingButton] = useState(false);
 
   useEffect(() => {
     handleTokenCheck();
@@ -78,31 +57,6 @@ function App() {
   //     })
   //     .catch((err) => console.log(err));
   // }, [loggedIn])
-
-
-  // const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    if (localStorage.getItem('moviesStorage')) {
-      const initialSearch = JSON.parse(localStorage.getItem('moviesStorage'));
-      const searchResult = shortsFilter(initialSearch, request, checkboxStatus);
-      setFilteredMovies(searchResult);
-      setIsSearchDone(true);
-    }
-  }, [currentUser])
-
-  //сохраненные фильмы
-  useEffect(() => {
-    if (loggedIn) {
-      mainApi.getSavedMovies()
-        .then((res) => {
-          const findSavedMovies = res.filter((m) => m.owner._id === currentUser._id)
-          localStorage.setItem("savedMovies", JSON.stringify(findSavedMovies));
-          setSavedMovies(findSavedMovies);
-        })
-        .catch((err) => console.log(err))
-    }
-  }, [loggedIn])
 
   // useEffect(() => {
   //   handleTokenCheck();
@@ -126,6 +80,20 @@ function App() {
   //     .catch((err) => console.log(err));
 
   // }, [loggedIn])
+
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi.getSavedMovies()
+        .then((movies) => {
+          const mySavedMovies = movies.filter((movie) => movie.owner === currentUser._id);
+          setSavedMovies(mySavedMovies);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }, [currentUser._id, setSavedMovies]);
+
 
 
   const handleTokenCheck = () => {
@@ -213,122 +181,18 @@ function App() {
   }
 
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.clear();
     setLoggedIn(false);
     // localStorage.removeItem('jwt');
     // setCurrentUser('');
     navigate('/');
-    console.log(localStorage, 'localstorage')
+    console.log(localStorage, 'localstorage');
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    localStorage.removeItem('allMovies');
+    localStorage.removeItem('allData');
+    setSavedMovies([]);
   };
-
-
-  // Preloader
-  function startLoading() {
-    setLoading(true);
-    setTimeout(() => setLoading(false), 700);
-  }
-
-  //поиск фильмов
-  function handleSearchMovie(request, checkboxStatus) {
-    startLoading();
-    setRenderedMovies([]);
-    setRequest(request);
-    setCheckboxStatus(checkboxStatus);
-
-    const initialMoviesInLocalStorage = JSON.parse(localStorage.getItem('initialMovies'));
-
-    if (!initialMoviesInLocalStorage) {
-      setLoading(true);
-      moviesApi
-        .getMovies()
-        .then((movies) => {
-          setInitialMovies(movies);
-          localStorage.setItem('initialMovies', JSON.stringify(movies));
-        })
-        .catch(() => {
-          setSearchStatus('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.')
-        })
-        .finally(() => {
-          setLoading(false);
-        })
-    } else {
-      setInitialMovies(initialMoviesInLocalStorage);
-    }
-  }
-
-  useEffect(() => {
-    if (initialMovies.length > 0) {
-      const moviesStorage = shortsFilter(initialMovies, request, checkboxStatus);
-
-      localStorage.setItem('moviesStorage', JSON.stringify(moviesStorage));
-      localStorage.setItem('request', request);
-      localStorage.setItem('checkboxStatus', checkboxStatus);
-
-      setFilteredMovies(moviesStorage);
-      setIsSearchDone(true);
-    }
-  }, [initialMovies, request, checkboxStatus]);
-
-  //отображение карточек
-  useEffect(() => {
-    if (renderedMovies.length === filteredMovies.length) {
-      setMoreLoadingButton(false);
-    }
-  }, [renderedMovies, filteredMovies]);
-
-
-  //сохранить фильм
-  function handleSaveMovie(movie) {
-    mainApi
-      .saveMovie(movie)
-      .then((res) => {
-        const updatedSavedMovies = [...savedMovies, { ...res, id: res.movieId }];
-        setSavedMovies(updatedSavedMovies);
-        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
-      })
-      .catch(err => console.log(err));
-  };
-
-  //удалить фильм из библиотеки
-  function handleDeleteMovie(movie) {
-    mainApi
-      .deleteMovie(movie._id)
-      .then(() => {
-        const updatedSavedMovies = savedMovies.filter(m => m._id !== movie._id)
-        setSavedMovies(updatedSavedMovies);
-        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
-      })
-      .catch(err => console.log(err))
-  };
-
-  //показать карточки, если остались еще в хранилище
-  useEffect(() => {
-    if (width <= SCREEN_SIZE_MOBILE) {
-      setFirstMovies(INITIAL_MOVIES_MOBILE)
-      setMoreMovies(LOAD_MORE_TABLET_MOBILE)
-    } else if (width <= SCREEN_SIZE_TABLET) {
-      setFirstMovies(INITIAL_MOVIES_TABLET)
-      setMoreMovies(LOAD_MORE_TABLET_MOBILE)
-    } else if (width > SCREEN_SIZE_DESTOP) {
-      setFirstMovies(INITIAL_MOVIES_DESTOP)
-      setMoreMovies(LOAD_MORE_DESKTOP)
-    }
-  }, [width])
-
-  useEffect(() => {
-    if (filteredMovies.length > 0) {
-      if (filteredMovies.length > firstMovies) {
-        setRenderedMovies(filteredMovies.slice(0, firstMovies));
-        setMoreLoadingButton(true);
-      } else {
-        setRenderedMovies(filteredMovies);
-      }
-    }
-  }, [filteredMovies, firstMovies]);
-
-  function renderMovies() {
-    setRenderedMovies((previousCount) => filteredMovies.slice(0, previousCount.length + moreMovies));
-  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -336,7 +200,6 @@ function App() {
         <div className="app__container">
 
           <Routes>
-
             <Route exact path={'/'} element={<>
               <Header loggedIn={loggedIn} />
               <Main />
@@ -361,26 +224,19 @@ function App() {
             </Route>
 
             <Route exact path={'/movies'} element={
-
               <ProtectedRoute loggedIn={loggedIn}>
                 <>
                   <Header
                     loggedIn={loggedIn} />
                   <Movies
                     loggedIn={loggedIn}
-
-                    // movies={initialMovies}
-
-                    onSearch={handleSearchMovie}
-                    loading={loading}
-                    isSearchDone={isSearchDone}
-                    searchStatus={searchStatus}
-                    renderedMovies={renderedMovies}
                     savedMovies={savedMovies}
-                    onSaveMovie={handleSaveMovie}
-                    onDeleteMovie={handleDeleteMovie}
-                    moreLoadingButton={moreLoadingButton}
-                    onRenderMovies={renderMovies}
+                    setSavedMovies={setSavedMovies}
+                  // setIsInfoMessageOpen={setIsInfoMessageOpen}
+                  // setTextInfoMessage={setTextInfoMessage}
+                  // isInfoMessageOpen={isInfoMessageOpen}
+                  // closeInfoMessage={closeInfoMessage}
+                  // textIfnoMessage={textIfnoMessage}
                   />
                   <Footer />
                 </>
@@ -398,7 +254,12 @@ function App() {
                   <SavedMovies
                     loggedIn={loggedIn}
                     savedMovies={savedMovies}
-                    onDeleteMovie={handleDeleteMovie}
+                    setSavedMovies={setSavedMovies}
+                  // setIsInfoMessageOpen={setIsInfoMessageOpen}
+                  // setTextInfoMessage={setTextInfoMessage}
+                  // isInfoMessageOpen={isInfoMessageOpen}
+                  // closeInfoMessage={closeInfoMessage}
+                  // textIfnoMessage={textIfnoMessage}
                   />
                   <Footer />
                 </>
@@ -426,7 +287,6 @@ function App() {
               </>
             }>
             </Route>
-
           </Routes>
 
         </div>

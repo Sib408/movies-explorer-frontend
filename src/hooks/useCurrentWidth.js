@@ -1,29 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+import { MAX_WIDTH_SCREEN } from '../utils/constans';
 
 const useCurrentWidth = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(MAX_WIDTH_SCREEN);
 
-  useEffect(() => {
-    // timeoutId for debounce mechanism
-    let timeoutId = null;
+  useLayoutEffect(() => {
+    function handleWidth() {
+      setWidth(window.innerWidth);
+    };
 
-    const resizeListener = () => {
-      // prevent execution of previous setTimeout
-      clearTimeout(timeoutId);
-      // change width from the state object after 150 milliseconds
-      timeoutId = setTimeout(() => setWidth(window.innerWidth), 150);
+    function updater(func, time) {
+      let timer;
+      return () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          timer = null;
+          func.apply(this, arguments);
+        }, time);
+      }
     }
-    // set resize listener
-    window.addEventListener('resize', resizeListener);
 
-    //clean up function after add
-    return () => {
-      //remove resize listener
-      window.removeEventListener('resize', resizeListener);
-    }
-  }, []);
+    const updateHandleWidth = updater(handleWidth, 1000);
 
+    window.addEventListener('resize', updateHandleWidth)
+    handleWidth();
+    return () => window.removeEventListener('resize', updateHandleWidth);
+  }, [])
   return width;
 }
+
 
 export default useCurrentWidth;

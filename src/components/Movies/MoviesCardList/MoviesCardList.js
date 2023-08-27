@@ -4,42 +4,22 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
 
-function MoviesCardList({ movies,
-  savedMovies,
-  onSaveMovie,
-  onDeleteMovie,
-  loading,
-  isSearchDone,
-  onRenderMovies,
-  moreLoadingButton, }) {
-  const moreLoadingButtonClass = moreLoadingButton ? `movieCardList__button` : `movieCardList__button-hidden`;
-
-
+function MoviesCardList(props) {
 
   return (
     <section className='movieCardList'>
       <div className='movieCardList__container'>
-        {movies.map((movie) => (
+        {props.moviesList && props.moviesList.map((card) => (
           <MoviesCard
-            movie={movie}
-            key={movie._id || movie.id}
-            savedMovies={savedMovies}
-            onSaveMovie={onSaveMovie}
-            onDeleteMovie={onDeleteMovie}
+            isSavedMoviesPage={props.isSavedMoviesPage}
+            deleteMovie={props.deleteMovie}
+            savedMovies={props.savedMovies}
+            saveMovie={props.saveMovie}
+            card={card}
+            key={card.id || card._id}
           />
         ))}
       </div>
-      {!loading ? isSearchDone
-        ? <>
-          <button
-            onClick={onRenderMovies}
-            className={moreLoadingButtonClass}
-            aria-label='Загрузить ещё'
-            type='button'>Ещё</button>
-        </>
-        : ("")
-        : ("")
-      }
     </section>
   );
 };

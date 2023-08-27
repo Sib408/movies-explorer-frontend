@@ -4,7 +4,6 @@
 
 .search__container {
   display: flex;
-
 }
 
 .search__form {
@@ -42,7 +41,6 @@
 
 .search__input:focus::placeholder {
   opacity: .3;
-
 }
 
 .search__button {
@@ -65,8 +63,6 @@
   opacity: .8;
 }
 
-
-
 @media screen and (max-width: 960px) {
   .search {
     padding: 80px calc(30px + (70 - 30) * ((100vw - 768px) / (960 - 768))) 40px;
@@ -79,7 +75,6 @@
   }
 
   .search__form {
-    background-color: #2F2F2F;
     border-radius: 9px;
   }
 
@@ -101,7 +96,6 @@
   .search__input::placeholder {
     font-size: 12PX;
   }
-
 
 }
 
