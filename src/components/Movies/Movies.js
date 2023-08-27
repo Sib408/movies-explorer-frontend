@@ -30,7 +30,6 @@ function Movies({ onSearch,
         : isSearchDone
           ? renderedMovies.length > 0
             ? <MoviesCardList
-              // movies={movies}
               movies={renderedMovies}
               savedMovies={savedMovies}
               onSaveMovie={onSaveMovie}
@@ -51,7 +50,6 @@ function Movies({ onSearch,
             )
           : ("")
       }
-
     </main>
 
   );

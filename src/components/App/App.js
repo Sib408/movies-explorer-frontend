@@ -64,9 +64,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [moreLoadingButton, setMoreLoadingButton] = useState(false);
 
-  // useEffect(() => {
-  //   handleTokenCheck();
-  // }, [loggedIn])
+  useEffect(() => {
+    handleTokenCheck();
+  }, [loggedIn])
 
   // useEffect(() => {
   //   handleTokenCheck();
@@ -86,9 +86,6 @@ function App() {
     if (localStorage.getItem('moviesStorage')) {
       const initialSearch = JSON.parse(localStorage.getItem('moviesStorage'));
       const searchResult = shortsFilter(initialSearch, request, checkboxStatus);
-      // const savedMoviesInStorage = JSON.parse(localStorage.getItem("savedMovies"));
-
-      //setSavedMovies(savedMoviesInStorage);
       setFilteredMovies(searchResult);
       setIsSearchDone(true);
     }
@@ -107,16 +104,16 @@ function App() {
     }
   }, [loggedIn])
 
-  useEffect(() => {
-    handleTokenCheck();
-    mainApi
-      .getUserInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => console.log(err));
+  // useEffect(() => {
+  //   handleTokenCheck();
+  //   mainApi
+  //     .getUserInfo()
+  //     .then((res) => {
+  //       setCurrentUser(res);
+  //     })
+  //     .catch((err) => console.log(err));
 
-  }, [loggedIn])
+  // }, [loggedIn])
 
 
   // useEffect(() => {

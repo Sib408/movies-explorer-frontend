@@ -57,16 +57,18 @@ function Search({ onSearch }) {
   return (
     <section className="search">
       <div className="search__container">
-        <form className="search__form" onSubmit={handleSubmit}>
+        <form className="search__form">
           <input className="search__input"
             type="text"
             name="request"
             placeholder="Фильм"
             value={request || ''}
+            onSubmit={handleSubmit}
             onChange={handleRequestChange}
             required />
+
+          <button className="search__button" type="submit" aria-label="поиск">Найти</button>
         </form>
-        <button className="search__button" type="submit" aria-label="поиск">Найти</button>
       </div>
       <Checkbox
         checkboxStatus={checkboxStatus}

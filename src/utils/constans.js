@@ -13,7 +13,7 @@ export const MOVIES_API = {
     'Content-Type': 'application/json'
   }
 }
-export const MOVIE_LINK = 'https://api.nomoreparties.co';
+export const MOVIES_URL = 'https://api.nomoreparties.co';
 
 export const SCREEN_SIZE_MOBILE = 480;
 export const INITIAL_MOVIES_MOBILE = 5;
