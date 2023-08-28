@@ -21,3 +21,11 @@
   line-height: 18px;
   text-align: center;
 }
+
+.savedMovies__error {
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #EE3465;
+  text-align: center;
+}

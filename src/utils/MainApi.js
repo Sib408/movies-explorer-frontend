@@ -1,5 +1,3 @@
-// import { MOVIES_API } from "./constans";
-
 export class MainApi {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -93,18 +91,6 @@ export class MainApi {
     })
       .then(this._checkServerResponse);
   }
-
-  // saveMovie({ data }) {
-  //   return fetch(`${this._baseUrl}/movies`, {
-  //     method: "POST",
-  //     credentials: 'include',
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({ data })
-  //   })
-  //     .then(this._checkServerResponse)
-  // }
 
   saveMovie(movie) {
     return fetch(`${this._baseUrl}/movies`, {

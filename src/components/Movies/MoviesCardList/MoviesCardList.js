@@ -17,8 +17,10 @@ function MoviesCardList(props) {
             saveMovie={props.saveMovie}
             card={card}
             key={card.id || card._id}
+
           />
         ))}
+
       </div>
     </section>
   );

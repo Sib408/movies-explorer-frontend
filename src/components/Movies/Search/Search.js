@@ -12,7 +12,7 @@ function Search(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.handleGetMovies(values.film, props.isShorts);
+    props.handleGetMovies(values.movie, props.isShorts);
   }
 
   function handleShorts() {
@@ -21,7 +21,7 @@ function Search(props) {
 
   useEffect(() => {
     if (props.lastSearchFilm) {
-      setValues({ ...values, 'film': props.lastSearchFilm });
+      setValues({ ...values, 'movie': props.lastSearchFilm });
     }
   }, [props.lastSearchFilm, setValues]);
 
@@ -31,11 +31,11 @@ function Search(props) {
         <form className="search__form">
           <input className="search__input"
             type="text"
-            name="film"
-            id="film"
+            name="movie"
+            id="movie"
             minLength={1}
             placeholder="Фильм"
-            value={values.film || ''}
+            value={values.movie || ''}
             onChange={handleChange}
             required />
 

@@ -57,7 +57,8 @@ function SavedMovies(props) {
   return (
     <main className='savedMovies'>
       <Search
-        isShorts={isShorts} setShorts={setShorts}
+        isShorts={isShorts}
+        setShorts={setShorts}
         handleGetMovies={handleGetMovies}
         isInfoMessageOpen={props.isInfoMessageOpen}
         closeInfoMessage={props.closeInfoMessage}

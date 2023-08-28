@@ -40,32 +40,3 @@
     padding-top: 49px;
   }
 }
-
-.movieCardList__button {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  color: #FFFFFF;
-  margin: 0;
-  padding: 0;
-  height: 36px;
-  margin-top: 60px;
-  border: none;
-  cursor: pointer;
-  background-color: #2F2F2F;
-  border-radius: 5px;
-  margin-bottom: 80px;
-  width: 100%;
-}
-
-.movieCardList__button:hover {
-  transition: .6s linear;
-  -webkit-transition: .6s;
-  opacity: .6;
-}
-
-.movieCardList__button-hidden {
-  opacity: 0;
-  visibility: hidden;
-}

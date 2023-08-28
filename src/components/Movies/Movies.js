@@ -48,7 +48,7 @@ function Movies(props) {
 
   useEffect(() => {
     if (allData) {
-      setLastSearchFilm(JSON.parse(allData)?.film);
+      setLastSearchFilm(JSON.parse(allData)?.movie);
       setShorts(JSON.parse(allData)?.isShorts);
     }
   }, [])
@@ -81,8 +81,8 @@ function Movies(props) {
     }
   }, [])
 
-  async function handleGetMovies(film, isShorts) {
-    if (!film || film === ' ') {
+  async function handleGetMovies(movie, isShorts) {
+    if (!movie || movie === ' ') {
       props.setIsInfoMessageOpen(true);
       props.setTextInfoMessage("Введите параметры поиска")
     } else {
@@ -95,12 +95,12 @@ function Movies(props) {
           allMovies = localStorage.getItem('allMovies');
         }
 
-        filtredMovies = filterMoviesByName(JSON.parse(allMovies), film);
+        filtredMovies = filterMoviesByName(JSON.parse(allMovies), movie);
         shortFiltredMovies = filterMoviesByDuration(filtredMovies);
         const allData = {
           filtredMovies,
           shortFiltredMovies,
-          film,
+          movie,
           isShorts
         };
         localStorage.setItem('allData', JSON.stringify(allData));
@@ -125,7 +125,7 @@ function Movies(props) {
         setShownMovies([]);
         setIsReadyMovie(false);
         setErrorMessage(
-          'Во время запроса произошла ошибка.Подождите немного и попробуйте ещё раз')
+          'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         setIsLoading(false);
       }
     }
@@ -156,36 +156,39 @@ function Movies(props) {
 
   return (
     <main className='movies'>
-      <Search
-        isLoading={isLoading}
-        isShorts={isShorts}
-        setShorts={setShorts}
-        lastSearchFilm={lastSearchFilm}
-        handleGetMovies={handleGetMovies}
-      //  isInfoMessageOpen={props.isInfoMessageOpen}
-      //  closeInfoMessage={props.closeInfoMessage}
-      //  textIfnoMessage={props.textIfnoMessage}
-      />
-      {isLoading
-        ? <Preloader />
-        : isReadyMovie
+      <div className='movies__container'>
+        <Search
+          isLoading={isLoading}
+          isShorts={isShorts}
+          setShorts={setShorts}
+          lastSearchFilm={lastSearchFilm}
+          handleGetMovies={handleGetMovies}
+        //  isInfoMessageOpen={props.isInfoMessageOpen}
+        //  closeInfoMessage={props.closeInfoMessage}
+        //  textIfnoMessage={props.textIfnoMessage}
+        />
+        {isLoading
+          ? <Preloader />
+          : isReadyMovie
 
-          ?
-          <>
-            <MoviesCardList
-              deleteMovie={handleDeleteMovie}
-              savedMovies={props.savedMovies}
-              saveMovie={saveMovie}
-              moviesList={shownMovies}
-              isSavedMoviesPage={false} />
+            ?
+            <>
+              <MoviesCardList
+                deleteMovie={handleDeleteMovie}
+                savedMovies={props.savedMovies}
+                saveMovie={saveMovie}
+                moviesList={shownMovies}
+                isSavedMoviesPage={false} />
 
-            <button onClick={moreContent} type='button'
-              className={`film-content__more ${isShorts ? moviesCount >= shortFiltredMovies.length && 'film-content__more_none-display' : moviesCount >= filtredMovies.length && 'film-content__more_none-display'}`}>Ещё</button>
-          </>
-          : <>
-            <h2 className='film-content__error'>{errorMessage}</h2>
-          </>
-      }
+              <button onClick={moreContent} type='button'
+                className={`movie__button ${isShorts ? moviesCount >= shortFiltredMovies.length && 'movie__button_hidden'
+                  : moviesCount >= filtredMovies.length && 'movie__button_hidden'}`}>Ещё</button>
+            </>
+            : <>
+              <h2 className='movies__error'>{errorMessage}</h2>
+            </>
+        }
+      </div>
     </main>
 
   );
