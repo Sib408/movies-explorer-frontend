@@ -126,6 +126,24 @@
   opacity: .8;
 }
 
+.profile__nav-button_save {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  border: none;
+  color: #FFF;
+  border-radius: 3px;
+  background: #3456F3;
+  cursor: pointer;
+  transition: all .3s ease;
+  padding: 13px 167px;
+}
+
+.profile__nav-button_disabled {
+  cursor: inherit;
+  opacity: .7;
+}
+
 .profile__nav-button_signout {
   font-size: 13px;
   line-height: 16px;

@@ -20,15 +20,11 @@ import Navigation from '../Navigation/Navigation';
 import ProtectedRoute from '../ProtectedRoute/ProtecterRoute';
 
 import { mainApi } from "../../utils/MainApi";
-// import { moviesApi } from "../../utils/MoviesApi";
-// import moviesApi from "../../utils/MoviesApi";
-
-
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
-  // const width = useCurrentWidth();
+
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
@@ -38,48 +34,13 @@ function App() {
   const [profileMessage, setProfileMessage] = useState('');
 
   const [savedMovies, setSavedMovies] = useState([]);
-  // const [isInfoMessageOpen, setIsInfoMessageOpen] = useState(false);
-  // const [textIfnoMessage, setTextInfoMessage] = useState('');
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isInfoErrorOpen, setIsInfoErrorOpen] = useState(false);
+  const [textIfnoMessage, setTextInfoError] = useState('');
 
 
   useEffect(() => {
     handleTokenCheck();
   }, [loggedIn])
-
-  // useEffect(() => {
-  //   handleTokenCheck();
-
-  //   Promise.all([moviesApi.getMovies(), mainApi.getUserInfo()])
-  //     .then(([movies, userInfo]) => {
-  //       setCurrentUser(userInfo);
-  //       setInitialMovies(movies);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [loggedIn])
-
-  // useEffect(() => {
-  //   handleTokenCheck();
-  //   mainApi
-  //     .getUserInfo()
-  //     .then((res) => {
-  //       setCurrentUser(res);
-  //     })
-  //     .catch((err) => console.log(err));
-
-  // }, [loggedIn])
-
-
-  // useEffect(() => {
-  //   handleTokenCheck();
-  //   moviesApi
-  //     .getMovies()
-  //     .then((movies) => {
-  //       setMovies(movies);
-  //     })
-  //     .catch((err) => console.log(err));
-
-  // }, [loggedIn])
 
   useEffect(() => {
     if (loggedIn) {
@@ -181,18 +142,15 @@ function App() {
   }
 
   const handleLogout = () => {
-    // localStorage.clear();
+    localStorage.clear();
     setLoggedIn(false);
-    // localStorage.removeItem('jwt');
-    // setCurrentUser('');
     navigate('/');
-    console.log(localStorage, 'localstorage');
-    localStorage.removeItem('jwt');
-    setLoggedIn(false);
-    localStorage.removeItem('allMovies');
-    localStorage.removeItem('allData');
-    setSavedMovies([]);
+
   };
+  function closeInfoError() {
+    setIsInfoErrorOpen(false);
+    setTextInfoError('')
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -232,11 +190,11 @@ function App() {
                     loggedIn={loggedIn}
                     savedMovies={savedMovies}
                     setSavedMovies={setSavedMovies}
-                  // setIsInfoMessageOpen={setIsInfoMessageOpen}
-                  // setTextInfoMessage={setTextInfoMessage}
-                  // isInfoMessageOpen={isInfoMessageOpen}
-                  // closeInfoMessage={closeInfoMessage}
-                  // textIfnoMessage={textIfnoMessage}
+                    setIsInfoErrorOpen={setIsInfoErrorOpen}
+                    setTextInfoError={setTextInfoError}
+                    isInfoErrorOpen={isInfoErrorOpen}
+                    closeInfoError={closeInfoError}
+                    textIfnoMessage={textIfnoMessage}
                   />
                   <Footer />
                 </>
@@ -255,11 +213,11 @@ function App() {
                     loggedIn={loggedIn}
                     savedMovies={savedMovies}
                     setSavedMovies={setSavedMovies}
-                  // setIsInfoMessageOpen={setIsInfoMessageOpen}
-                  // setTextInfoMessage={setTextInfoMessage}
-                  // isInfoMessageOpen={isInfoMessageOpen}
-                  // closeInfoMessage={closeInfoMessage}
-                  // textIfnoMessage={textIfnoMessage}
+                    setIsInfoErrorOpen={setIsInfoErrorOpen}
+                    setTextInfoError={setTextInfoError}
+                    isInfoErrorOpen={isInfoErrorOpen}
+                    closeInfoError={closeInfoError}
+                    textIfnoMessage={textIfnoMessage}
                   />
                   <Footer />
                 </>

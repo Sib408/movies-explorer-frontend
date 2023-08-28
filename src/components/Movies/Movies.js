@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import Search from './Search/Search';
 import Preloader from './Preloader/Preloader'
 import MoviesCardList from './MoviesCardList/MoviesCardList';
+// import Error from '../Error/Error';
 import {
-  MAX_ADD_MOVIES, MAX_INITIAL_MOVIES,
-  MAX_WIDTH_SCREEN, MEDIUM_INITIAL_MOVIES,
-  MEDIUM_WIDTH_SCREEN, MIN_ADD_MOVIES,
-  MIN_INITIAL_MOVIES
+  MAX_ADD_MOVIES, MAX_MOVIES,
+  MAX_SCREEN, MEDIUM_MOVIES,
+  MEDIUM__SCREEN, MIN_ADD_MOVIES,
+  MIN_MOVIES
 } from '../../utils/constans';
 import useCurrentWidth from '../../hooks/useCurrentWidth';
 import { filterMoviesByDuration, filterMoviesByName } from '../../utils/FilterFinder';
@@ -21,10 +22,13 @@ function Movies(props) {
   const [additionalMovies, setAdditionalMovies] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [lastSearchFilm, setLastSearchFilm] = useState('');
+  const [lastSearchMovie, setLastSearchMovie] = useState('');
   const [isReadyMovie, setIsReadyMovie] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isShorts, setShorts] = useState(false);
+
+  const [moreLoadingButton, setMoreLoadingButton] = useState(false);
+
   let allMovies = localStorage.getItem('allMovies');
   const allData = localStorage.getItem('allData');
   let filtredMovies = JSON.parse(allData)?.filtredMovies || [];
@@ -33,25 +37,26 @@ function Movies(props) {
   const moviesCount = initialMovies + additionalMovies * pageCount;
 
 
+
   useEffect(() => {
-    if (widthBrowser >= MAX_WIDTH_SCREEN) {
-      setInitialMovies(MAX_INITIAL_MOVIES);
+    if (widthBrowser >= MAX_SCREEN) {
+      setInitialMovies(MAX_MOVIES);
       setAdditionalMovies(MAX_ADD_MOVIES);
-    } else if (widthBrowser > MEDIUM_WIDTH_SCREEN && widthBrowser < MAX_WIDTH_SCREEN) {
-      setInitialMovies(MEDIUM_INITIAL_MOVIES);
+    } else if (widthBrowser > MEDIUM__SCREEN && widthBrowser < MAX_SCREEN) {
+      setInitialMovies(MEDIUM_MOVIES);
       setAdditionalMovies(MIN_ADD_MOVIES);
-    } else if (widthBrowser <= MEDIUM_WIDTH_SCREEN) {
-      setInitialMovies(MIN_INITIAL_MOVIES);
+    } else if (widthBrowser <= MEDIUM__SCREEN) {
+      setInitialMovies(MIN_MOVIES);
       setAdditionalMovies(MIN_ADD_MOVIES);
     }
   }, [widthBrowser]);
 
   useEffect(() => {
     if (allData) {
-      setLastSearchFilm(JSON.parse(allData)?.movie);
+      setLastSearchMovie(JSON.parse(allData)?.movie);
       setShorts(JSON.parse(allData)?.isShorts);
     }
-  }, [])
+  }, [allData])
 
   useEffect(() => {
     if (!errorMessage) {
@@ -81,10 +86,16 @@ function Movies(props) {
     }
   }, [])
 
+  useEffect(() => {
+    const availableMoviesCount = isShorts ? shortFiltredMovies.length : filtredMovies.length
+    setMoreLoadingButton(shownMovies.length < availableMoviesCount);
+
+  }, [isShorts, shownMovies, filtredMovies, shortFiltredMovies]);
+
   async function handleGetMovies(movie, isShorts) {
     if (!movie || movie === ' ') {
-      props.setIsInfoMessageOpen(true);
-      props.setTextInfoMessage("Введите параметры поиска")
+      props.setIsInfoErrorOpen(true);
+      props.setTextInfoError("Введите параметры поиска")
     } else {
       try {
         setIsLoading(true);
@@ -161,11 +172,11 @@ function Movies(props) {
           isLoading={isLoading}
           isShorts={isShorts}
           setShorts={setShorts}
-          lastSearchFilm={lastSearchFilm}
+          lastSearchMovie={lastSearchMovie}
           handleGetMovies={handleGetMovies}
-        //  isInfoMessageOpen={props.isInfoMessageOpen}
-        //  closeInfoMessage={props.closeInfoMessage}
-        //  textIfnoMessage={props.textIfnoMessage}
+        // isInfoErrorOpen={props.isInfoErrorOpen}
+        // closeInfoError={props.closeInfoError}
+        // textIfnoMessage={props.textIfnoMessage}
         />
         {isLoading
           ? <Preloader />
@@ -181,11 +192,12 @@ function Movies(props) {
                 isSavedMoviesPage={false} />
 
               <button onClick={moreContent} type='button'
-                className={`movie__button ${isShorts ? moviesCount >= shortFiltredMovies.length && 'movie__button_hidden'
-                  : moviesCount >= filtredMovies.length && 'movie__button_hidden'}`}>Ещё</button>
+                className={moreLoadingButton ? `movie__button` : `movie__button-hidden`}>Ещё</button>
+
             </>
             : <>
-              <h2 className='movies__error'>{errorMessage}</h2>
+
+              <span className='movies__error'>{errorMessage}</span>
             </>
         }
       </div>

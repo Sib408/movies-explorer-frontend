@@ -48,6 +48,8 @@
 }
 
 .movies__error {
+  display: flex;
+  justify-content: center;
   font-size: 14px;
   line-height: 1.2;
   font-weight: 500;

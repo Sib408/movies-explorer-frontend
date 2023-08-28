@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "../Movies/Search/Search";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
-// import Preloader from '../Movies/Preloader/Preloader'
+import Preloader from '../Movies/Preloader/Preloader'
 import { mainApi } from '../../utils/MainApi';
 import { filterMoviesByDuration, filterMoviesByName } from '../../utils/FilterFinder';
 import './SavedMovies.css';
@@ -10,6 +10,7 @@ function SavedMovies(props) {
 
   const [isShorts, setShorts] = useState(false);
   const [listOfSavedMovies, setListOfSavedMovies] = useState(props.savedMovies);
+  const [isLoading, setIsLoading] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -20,8 +21,8 @@ function SavedMovies(props) {
 
   function handleGetMovies(movie, isShorts) {
     if (!movie || movie === ' ') {
-      props.setIsInfoMessageOpen(true);
-      props.setTextInfoMessage("Введите параметры поиска")
+      props.setIsInfoErrorOpen(true);
+      props.setTextInfoError("Введите параметры поиска")
     } else {
       const filtredMovies = filterMoviesByName(props.savedMovies, movie);
       const shortsFiltredMovies = filterMoviesByDuration(filtredMovies);
@@ -60,23 +61,26 @@ function SavedMovies(props) {
         isShorts={isShorts}
         setShorts={setShorts}
         handleGetMovies={handleGetMovies}
-        isInfoMessageOpen={props.isInfoMessageOpen}
-        closeInfoMessage={props.closeInfoMessage}
+        isInfoErrorOpen={props.isInfoErrorOpen}
+        closeInfoError={props.closeInfoError}
         textIfnoMessage={props.textIfnoMessage}
       />
-      {isReady
-        ? <>
-          <MoviesCardList
-            deleteMovie={handleDeleteMovie}
-            savedMovies={props.savedMovies}
-            moviesList={listOfSavedMovies}
-            isSavedMoviesPage={true} />
-        </>
-        : <>
-          <span className='savedMovies__error'>{errorMessage}</span>
-        </>
+      {isLoading
+        ? <Preloader />
+        :
+        isReady
+          ? <>
+            <MoviesCardList
+              deleteMovie={handleDeleteMovie}
+              savedMovies={props.savedMovies}
+              moviesList={listOfSavedMovies}
+              isSavedMoviesPage={true} />
+          </>
+          : <>
+            <span className='savedMovies__error'>{errorMessage}</span>
+          </>
       }
-      <MoviesCardList />
+
 
     </main>
   )

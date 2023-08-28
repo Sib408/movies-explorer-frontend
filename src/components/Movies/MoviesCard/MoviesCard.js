@@ -66,7 +66,7 @@ function MoviesCard(props) {
 
         {location.pathname === '/saved-movies' &&
           <button type='button' aria-label='удалить фильм'
-            className={isSaved ? 'card__button' : 'card__button'}
+            className={'card__button'}
             onClick={handleDeleteMovie}
           >
             {isSaved ? <img className='card__click'
@@ -77,8 +77,8 @@ function MoviesCard(props) {
 
         {location.pathname === '/movies' &&
           <button type='button' aria-label='сохранить'
-            className={isSaved ? 'card__button' : 'card__button'}
-            onClick={handleSaveMovie}
+            className={'card__button'}
+            onClick={isSaved ? handleDeleteMovie : handleSaveMovie}
           >
             {isSaved ? <img className='card__click' alt='добавлено' src={activeLikeIcon} /> :
               <img className='card__add' alt='добавить' src={baseLikeIcon} />}

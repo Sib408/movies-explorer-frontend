@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 // import { useLocation } from 'react-router-dom';
 import useFormValidation from "../../../hooks/useFormValidator";
 import Checkbox from "./Checkbox";
+// import { InfoError } from "../../InfoError/InfoError";
+import Error from "../../Error/Error";
 
 import './Search.css'
 
@@ -20,10 +22,10 @@ function Search(props) {
   }
 
   useEffect(() => {
-    if (props.lastSearchFilm) {
-      setValues({ ...values, 'movie': props.lastSearchFilm });
+    if (props.lastSearchMovie) {
+      setValues({ ...values, 'movie': props.lastSearchMovie });
     }
-  }, [props.lastSearchFilm, setValues]);
+  }, [props.lastSearchMovie, setValues]);
 
   return (
     <section className="search">
@@ -39,16 +41,18 @@ function Search(props) {
             onChange={handleChange}
             required />
 
-          <button className="search__button" type="submit" aria-label="поиск" disabled={props.isLoading} onClick={handleSubmit}>Найти</button>
+          <button className="search__button" type="submit" aria-label="поиск"
+            disabled={props.isLoading} onClick={handleSubmit}>Найти</button>
         </form>
       </div>
       <Checkbox
         isChecked={props.isShorts}
         handlerCheck={handleShorts}
-      // checkboxStatus={checkboxStatus}
-      // onChangeCheckbox={handleChangeCheckbox}
+
       />
+      <Error errorMessage={props.errorMessage} />
     </section>
+
   )
 }
 

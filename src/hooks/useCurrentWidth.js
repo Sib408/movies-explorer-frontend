@@ -1,8 +1,8 @@
 import { useLayoutEffect, useState } from 'react';
-import { MAX_WIDTH_SCREEN } from '../utils/constans';
+import { MAX_SCREEN } from '../utils/constans';
 
 const useCurrentWidth = () => {
-  const [width, setWidth] = useState(MAX_WIDTH_SCREEN);
+  const [width, setWidth] = useState(MAX_SCREEN);
 
   useLayoutEffect(() => {
     function handleWidth() {
