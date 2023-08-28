@@ -35,7 +35,7 @@ function App() {
 
   const [savedMovies, setSavedMovies] = useState([]);
   const [isInfoErrorOpen, setIsInfoErrorOpen] = useState(false);
-  const [textIfnoMessage, setTextInfoError] = useState('');
+  const [textInfoError, setTextInfoError] = useState('');
 
 
   useEffect(() => {
@@ -194,7 +194,7 @@ function App() {
                     setTextInfoError={setTextInfoError}
                     isInfoErrorOpen={isInfoErrorOpen}
                     closeInfoError={closeInfoError}
-                    textIfnoMessage={textIfnoMessage}
+                    textInfoError={textInfoError}
                   />
                   <Footer />
                 </>
@@ -217,7 +217,7 @@ function App() {
                     setTextInfoError={setTextInfoError}
                     isInfoErrorOpen={isInfoErrorOpen}
                     closeInfoError={closeInfoError}
-                    textIfnoMessage={textIfnoMessage}
+                    textInfoError={textInfoError}
                   />
                   <Footer />
                 </>

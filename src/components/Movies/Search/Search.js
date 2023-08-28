@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-// import { useLocation } from 'react-router-dom';
+
 import useFormValidation from "../../../hooks/useFormValidator";
 import Checkbox from "./Checkbox";
-// import { InfoError } from "../../InfoError/InfoError";
-import Error from "../../Error/Error";
+import { InfoError } from "../../InfoError/InfoError";
 
 import './Search.css'
 
@@ -50,7 +49,10 @@ function Search(props) {
         handlerCheck={handleShorts}
 
       />
-      <Error errorMessage={props.errorMessage} />
+      <InfoError
+        isInfoErrorOpen={props.isInfoErrorOpen}
+        closeInfoError={props.closeInfoError}
+        textInfoError={props.textInfoError} />
     </section>
 
   )

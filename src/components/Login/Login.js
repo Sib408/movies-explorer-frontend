@@ -5,7 +5,8 @@ import useFormValidation from '../../hooks/useFormValidator';
 import Error from '../Error/Error';
 
 import './Login.css';
-import '../Register/Register.css'
+import '../Register/Register.css';
+
 
 function Login({ onLogin, loginError }) {
   const { values, handleChange, errors, isValid, resetForm } = useFormValidation();
@@ -41,7 +42,7 @@ function Login({ onLogin, loginError }) {
                 required />
               <Error errorMessage={errors.email} />
             </label>
-            <span className='profile__error'>{errors.name || ''}</span>
+            <span className='form__error'>{errors.email || ''}</span>
 
             <label>
               <span className="form__title">Пароль</span>
@@ -57,6 +58,7 @@ function Login({ onLogin, loginError }) {
                 required />
               <Error errorMessage={errors.password} />
             </label>
+            <span className='form__error'>{errors.password || ''}</span>
           </div>
           <div className="form__nav">
             <Error errorMessage={loginError} />

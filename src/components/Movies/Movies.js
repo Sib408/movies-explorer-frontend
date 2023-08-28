@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Search from './Search/Search';
 import Preloader from './Preloader/Preloader'
 import MoviesCardList from './MoviesCardList/MoviesCardList';
-// import Error from '../Error/Error';
 import {
   MAX_ADD_MOVIES, MAX_MOVIES,
   MAX_SCREEN, MEDIUM_MOVIES,
@@ -174,9 +173,10 @@ function Movies(props) {
           setShorts={setShorts}
           lastSearchMovie={lastSearchMovie}
           handleGetMovies={handleGetMovies}
-        // isInfoErrorOpen={props.isInfoErrorOpen}
-        // closeInfoError={props.closeInfoError}
-        // textIfnoMessage={props.textIfnoMessage}
+          isInfoErrorOpen={props.isInfoErrorOpen}
+          closeInfoError={props.closeInfoError}
+          textInfoError={props.textInfoError}
+
         />
         {isLoading
           ? <Preloader />

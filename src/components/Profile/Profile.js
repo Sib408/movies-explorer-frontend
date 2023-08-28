@@ -8,7 +8,7 @@ import './Profile.css'
 function Profile({ onUpdateUser, onSignOut, profileMessage }) {
   const { values, setValues, errors, setErrors, handleChange, isValid, setIsValid } = useFormValidation();
   const [profileMessageText, setProfileMessageText] = useState('');
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditSaveButton, setisEditSaveButton] = useState(false);
 
   const location = useLocation();
 
@@ -49,7 +49,7 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
       name: currentUser.name,
       email: currentUser.email
     });
-    setIsEditMode(!isEditMode);
+    setisEditSaveButton(!isEditSaveButton);
   }, [currentUser, setValues]);
 
   function handleSubmit(evt) {
@@ -58,11 +58,11 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
       name: values.name,
       email: values.email,
     });
-    setIsEditMode(!isEditMode);
+    setisEditSaveButton(!isEditSaveButton);
   }
 
   function handleEditMode() {
-    setIsEditMode(!isEditMode);
+    setisEditSaveButton(!isEditSaveButton);
     values.name = currentUser.name;
     values.email = currentUser.email;
   }
@@ -121,7 +121,7 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
 
           <div className='profile__nav'>
 
-            {!isEditMode
+            {!isEditSaveButton
               ? <button type='submit' className='profile__submit-button profile__nav-button_save'
                 disabled={!isValid} style={(!isValid) ? { opacity: '1', color: '#504B4A' } : null}>Сохранить </button>
               : <button disabled={!isValid} type='submit' style={(!isValid) ? { opacity: '1', color: '#504B4A' } : null}

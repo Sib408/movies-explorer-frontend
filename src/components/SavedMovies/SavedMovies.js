@@ -27,6 +27,7 @@ function SavedMovies(props) {
       const filtredMovies = filterMoviesByName(props.savedMovies, movie);
       const shortsFiltredMovies = filterMoviesByDuration(filtredMovies);
 
+
       if (isShorts) {
         setListOfSavedMovies(shortsFiltredMovies);
         setIsReady(true);
@@ -63,7 +64,7 @@ function SavedMovies(props) {
         handleGetMovies={handleGetMovies}
         isInfoErrorOpen={props.isInfoErrorOpen}
         closeInfoError={props.closeInfoError}
-        textIfnoMessage={props.textIfnoMessage}
+        textInfoError={props.textInfoError}
       />
       {isLoading
         ? <Preloader />

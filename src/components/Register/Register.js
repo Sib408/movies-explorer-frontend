@@ -41,6 +41,7 @@ function Register({ onRegister, registerError }) {
               <Error errorMessage={errors.name} />
 
             </label>
+            <span className='form__error'>{errors.name || ''}</span>
             <label >
               <span className="form__title">Email</span>
               <input className="form__input form__input_type_auth"
@@ -55,6 +56,7 @@ function Register({ onRegister, registerError }) {
                 required />
               <Error errorMessage={errors.email} />
             </label>
+            <span className='form__error'>{errors.email || ''}</span>
 
             <label>
               <span className="form__title">Пароль</span>
@@ -69,6 +71,7 @@ function Register({ onRegister, registerError }) {
                 required />
               <Error errorMessage={errors.password} />
             </label>
+            <span className='form__error'>{errors.password || ''}</span>
           </div>
           <div className="form__nav">
             <Error errorMessage={registerError} />
