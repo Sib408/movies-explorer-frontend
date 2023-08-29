@@ -5,4 +5,4 @@
 
 [Pull requests](https://github.com/Sib408/movies-explorer-frontend/pull/9)
 
-[Сайт находиться по ссылке](https://sib408.movies.nomoredomains.xyz) https://sib408.movies.nomoredomains.xyz
+[Сайт находится по ссылке](https://sib408.movies.nomoredomains.xyz) https://sib408.movies.nomoredomains.xyz
