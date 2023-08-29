@@ -143,6 +143,6 @@ export class MainApi {
 
 
 export const mainApi = new MainApi({
-  baseUrl: 'https://api.sib408.movies.nomoredomains.xyz',
-  // baseUrl: 'http://localhost:3001',
+  // baseUrl: 'https://api.sib408.movies.nomoredomains.xyz',
+  baseUrl: 'http://localhost:3000',
 });

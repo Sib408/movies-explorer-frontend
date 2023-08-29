@@ -8,3 +8,4 @@ export const MIN_MOVIES = 5;
 export const MAX_ADD_MOVIES = 4;
 export const MIN_ADD_MOVIES = 2;
 
+export const SHORTS_MOVIE_DURATION = 40;
