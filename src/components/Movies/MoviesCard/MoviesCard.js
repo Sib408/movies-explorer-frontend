@@ -23,7 +23,7 @@ function MoviesCard(props) {
 
 
   function onClickLink(url) {
-    return () => window.open(url, '_blank', 'noopener noreferrer')
+    return () => window.open(url, '_blank', 'noopener', 'noreferrer')
   }
 
   function handleDeleteMovie() {
@@ -52,6 +52,8 @@ function MoviesCard(props) {
     <article className='card'>
 
       <a className='card__link'
+        target="_blank"
+        rel="noreferrer"
         href={props.card.trailerLink}
         onClick={onClickLink}
       >
