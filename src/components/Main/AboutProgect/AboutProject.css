@@ -1,0 +1,193 @@
+.aboutProject {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: #202020;
+  padding: 110px 70px;
+}
+
+.aboutProject__title {
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: #FFF;
+  padding-bottom: 23px;
+  margin: 0;
+}
+
+.aboutProject__underline {
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
+}
+
+.aboutProject__components {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.aboutProject__component {
+  padding-top: 70px;
+  margin: 0;
+}
+
+.aboutProject__component:last-of-type {
+  padding-left: 53px;
+}
+
+.aboutProject__name {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  color: #FFF;
+  margin: 0;
+}
+
+.aboutProject__text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFF;
+  margin: 0;
+  padding-top: 26px;
+}
+
+.timeTracker {
+  display: grid;
+  padding-top: 110px;
+  grid-template-columns: 1fr 4fr;
+  padding-left: 0;
+  margin: 0;
+}
+
+.timeTracker__component {
+  list-style: none;
+  margin: 0;
+}
+
+.timeTracker__backend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+  background-color: #3DDC84;
+  height: 36px;
+
+}
+
+.timeTracker__frontend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFF;
+  background-color: #303030;
+  height: 36px;
+}
+
+.timeTracker__text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #8B8B8B;
+  margin: 0;
+  padding-top: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutProject {
+    padding: 90px 50px;
+  }
+
+  .aboutProject__section__title {
+    font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (768 - 320)));
+    ;
+  }
+
+
+  .aboutProject__component:last-of-type {
+    padding-left: 37px;
+  }
+
+  .aboutProject__text {
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 22px;
+  }
+
+  .timeTracker {
+    padding-top: 93px;
+    grid-template-columns: 140px 4fr;
+
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .aboutProject {
+    padding: 70px 18px;
+  }
+
+  .aboutProject__components {
+    flex-direction: column;
+  }
+
+  .aboutProject__component {
+    padding-top: 63px;
+  }
+
+  .aboutProject__component:last-of-type {
+    padding-top: 56px;
+    padding-left: 0px;
+  }
+
+  .aboutProject__name {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .aboutProject_text {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 16px;
+  }
+
+  .timeTracker {
+    padding-top: 60px;
+    grid-template-columns: 3fr 5fr;
+  }
+
+  .timeTracker__backend {
+    height: 35px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .timeTracker__frontend {
+    height: 35px;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .timeTracker__text {
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 10px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .timeTracker {
+    grid-template-columns: 100px 184px;
+  }
+}

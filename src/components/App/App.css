@@ -1,0 +1,20 @@
+.app {
+  min-height: 100vh;
+  background-color: #202020;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+.app__container {
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
