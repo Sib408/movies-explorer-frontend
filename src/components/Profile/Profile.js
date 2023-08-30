@@ -8,7 +8,6 @@ import './Profile.css'
 function Profile({ onUpdateUser, onSignOut, profileMessage }) {
   const { values, setValues, errors, setErrors, handleChange, isValid, setIsValid } = useFormValidation();
   const [profileMessageText, setProfileMessageText] = useState('');
-  // const [isEditSaveButton, setisEditSaveButton] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   const location = useLocation();
