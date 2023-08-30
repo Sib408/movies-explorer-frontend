@@ -19,7 +19,7 @@ function SavedMovies(props) {
     setIsReady(true);
   }, [props.savedMovies])
 
-  function handleGetMovies(movie, isShorts) {
+  function handleSearchMovies(movie, isShorts) {
     if (!movie || movie === ' ') {
       props.setIsInfoErrorOpen(true);
       props.setTextInfoError("Введите параметры поиска")
@@ -61,7 +61,7 @@ function SavedMovies(props) {
       <Search
         isShorts={isShorts}
         setShorts={setShorts}
-        handleGetMovies={handleGetMovies}
+        handleSearchMovies={handleSearchMovies}
         isInfoErrorOpen={props.isInfoErrorOpen}
         closeInfoError={props.closeInfoError}
         textInfoError={props.textInfoError}

@@ -13,11 +13,14 @@ function Search(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.handleGetMovies(values.movie, props.isShorts);
+    props.handleSearchMovies(values.movie, props.isShorts);
   }
 
   function handleShorts() {
-    props.setShorts(!props.isShorts)
+    const checkboxValue = !props.isShorts;
+    props.setShorts(checkboxValue)
+    props.handleSearchMovies(values.movie, checkboxValue);
+
   }
 
   useEffect(() => {

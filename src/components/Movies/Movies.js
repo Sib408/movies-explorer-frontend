@@ -91,12 +91,13 @@ function Movies(props) {
 
   }, [isShorts, shownMovies, filtredMovies, shortFiltredMovies]);
 
-  async function handleGetMovies(movie, isShorts) {
+  async function handleSearchMovies(movie, isShorts) {
     if (!movie || movie === ' ') {
       props.setIsInfoErrorOpen(true);
       props.setTextInfoError("Введите параметры поиска")
     } else {
       try {
+
         setIsLoading(true);
         setPageCount(0)
         if (!allMovies) {
@@ -172,7 +173,7 @@ function Movies(props) {
           isShorts={isShorts}
           setShorts={setShorts}
           lastSearchMovie={lastSearchMovie}
-          handleGetMovies={handleGetMovies}
+          handleSearchMovies={handleSearchMovies}
           isInfoErrorOpen={props.isInfoErrorOpen}
           closeInfoError={props.closeInfoError}
           textInfoError={props.textInfoError}
