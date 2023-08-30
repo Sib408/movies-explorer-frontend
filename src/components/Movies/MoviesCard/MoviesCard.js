@@ -21,11 +21,6 @@ function MoviesCard(props) {
   const hours = Math.floor(props.card.duration / 60);
   const minutes = props.card.duration % 60;
 
-
-  function onClickLink(url) {
-    return () => window.open(url, '_blank', 'noopener', 'noreferrer')
-  }
-
   function handleDeleteMovie() {
     props.deleteMovie(props.card.id || props.card._id, setIsSaved);
   }
@@ -55,7 +50,7 @@ function MoviesCard(props) {
         target="_blank"
         rel="noreferrer"
         href={props.card.trailerLink}
-        onClick={onClickLink}
+
       >
         <img className='card__image'
           src={props.isSavedMoviesPage ? `${props.card.image}` : `${MOVIES_URL}${props.card.image.url}`}
