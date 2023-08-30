@@ -8,7 +8,7 @@ export const MEDIUM_MOVIES = 8;
 export const MIN__SCREEN = 480;
 export const MIN_MOVIES = 5;
 export const MIN_ADD_MOVIES = 2;
-// export const MEDIUM_ADD_MOVIES = 3;
+
 
 
 export const SHORTS_MOVIE_DURATION = 40;
