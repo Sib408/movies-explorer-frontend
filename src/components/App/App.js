@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, Route, Routes } from "react-router-dom";
+import { useNavigate, useLocation, Route, Routes, Navigate } from "react-router-dom";
 import CurrentUserContext from "../../utils/context/CurrentUserContext";
 
 import './App.css';
@@ -167,19 +167,30 @@ function App() {
 
             <Route exact path={'/signup'} element={
               <>
+                !loggedIn ? (
                 <Register onRegister={handleRegister}
                   registerError={registerError} />
+                ) : (
+                <Navigate to="/" replace />
+                )
+
               </>
-            }>
-            </Route>
+            } />
+
 
             <Route exact path={'/signin'} element={
               <>
+                !loggedIn
+                ? (
                 <Login onLogin={handleLogin}
                   loginError={loginError} />
+                )
+                : (
+                <Navigate to="/" replace />
+                )
               </>
-            }>
-            </Route>
+            } />
+
 
             <Route exact path={'/movies'} element={
               <ProtectedRoute loggedIn={loggedIn}>
