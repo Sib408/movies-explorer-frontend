@@ -8,7 +8,8 @@ import './Profile.css'
 function Profile({ onUpdateUser, onSignOut, profileMessage }) {
   const { values, setValues, errors, setErrors, handleChange, isValid, setIsValid } = useFormValidation();
   const [profileMessageText, setProfileMessageText] = useState('');
-  const [isEditSaveButton, setisEditSaveButton] = useState(false);
+  // const [isEditSaveButton, setisEditSaveButton] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const location = useLocation();
 
@@ -23,6 +24,8 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
       })
     } else {
       handleChange(evt);
+      setIsEditing(true)
+
     }
   };
   const handleChangeEmail = (evt) => {
@@ -34,6 +37,8 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
       });
     } else {
       handleChange(evt);
+      setIsEditing(true)
+
     }
   };
   useEffect(() => {
@@ -49,7 +54,7 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
       name: currentUser.name,
       email: currentUser.email
     });
-    setisEditSaveButton(!isEditSaveButton);
+
   }, [currentUser, setValues]);
 
   function handleSubmit(evt) {
@@ -58,13 +63,8 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
       name: values.name,
       email: values.email,
     });
-    setisEditSaveButton(!isEditSaveButton);
-  }
+    setIsEditing(!isEditing);
 
-  function handleEditMode() {
-    setisEditSaveButton(!isEditSaveButton);
-    values.name = currentUser.name;
-    values.email = currentUser.email;
   }
 
   useEffect(() => {
@@ -96,7 +96,9 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
                 minLength="2"
                 maxLength="30"
                 pattern="[а-яА-Яa-zA-ZёË\- ]{1,}"
-                required />
+                required
+              // disabled={!isEditing}
+              />
 
             </label>
             <span className='profile__error'>{errors.name || ''}</span>
@@ -113,23 +115,29 @@ function Profile({ onUpdateUser, onSignOut, profileMessage }) {
                 minLength="2"
                 maxLength="40"
                 pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-                required />
+                required
+              // disabled={!isEditing}
+              />
             </label>
-            <span className='profile__error'>{errors.email || ''}</span>
-            <span className="profile__message">{profileMessageText}</span>
+
           </fieldset>
 
+          <span className='profile__error'>{errors.email || ''}</span>
+          <span className="profile__message">{profileMessageText}</span>
           <div className='profile__nav'>
 
-            {!isEditSaveButton
-              ? <button type='submit' className='profile__submit-button profile__nav-button_save'
-                disabled={!isValid} style={(!isValid) ? { opacity: '1', color: '#504B4A' } : null}>Сохранить </button>
-              : <button disabled={!isValid} type='submit' style={(!isValid) ? { opacity: '1', color: '#504B4A' } : null}
-                className='profile__nav-button profile__nav-button_edit' onClick={handleEditMode}>Редактировать</button>
+            {!isEditing ? (
+              <>
+                <button type="button" className="profile__nav-button profile__nav-button_edit">Редактировать</button>
+                <Link className='profile__nav-button profile__nav-button_signout' to='/' onClick={onSignOut}>Выйти из аккаунта</Link>
+              </>
+            ) : (
+              <>
+                <button className={`profile__nav-button_save ${!isValid ? 'profile__submit-button_disabled' : ''}`} type="submit">Сохранить</button>
+              </>
+            )}
 
-            }
 
-            <Link className='profile__nav-button profile__nav-button_signout' to='/' onClick={onSignOut}>Выйти из аккаунта</Link>
           </div>
 
         </form>
