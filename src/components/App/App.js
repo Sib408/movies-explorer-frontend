@@ -166,29 +166,29 @@ function App() {
             </Route>
 
             <Route exact path={'/signup'} element={
-              <>
-                !loggedIn ? (
+
+              !loggedIn ? (
                 <Register onRegister={handleRegister}
                   registerError={registerError} />
-                ) : (
+              ) : (
                 <Navigate to="/" replace />
-                )
+              )
 
-              </>
+
             } />
 
 
             <Route exact path={'/signin'} element={
-              <>
-                !loggedIn
+
+              !loggedIn
                 ? (
-                <Login onLogin={handleLogin}
-                  loginError={loginError} />
+                  <Login onLogin={handleLogin}
+                    loginError={loginError} />
                 )
                 : (
-                <Navigate to="/" replace />
+                  <Navigate to="/" replace />
                 )
-              </>
+
             } />
 
 
