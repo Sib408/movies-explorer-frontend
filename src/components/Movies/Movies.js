@@ -4,10 +4,8 @@ import Search from './Search/Search';
 import Preloader from './Preloader/Preloader'
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import {
-  MAX_ADD_MOVIES, MAX_MOVIES,
-  MAX_SCREEN, MEDIUM_MOVIES,
-  MEDIUM__SCREEN, MIN_ADD_MOVIES,
-  MIN_MOVIES
+  MAX_ADD_MOVIES, MAX_MOVIES, MAX_SCREEN, MEDIUM_MOVIES,
+  MEDIUM__SCREEN, MIN_MOVIES, MIN__SCREEN, MIN_ADD_MOVIES
 } from '../../utils/constans';
 import useCurrentWidth from '../../hooks/useCurrentWidth';
 import { filterMoviesByDuration, filterMoviesByName } from '../../utils/FilterFinder';
@@ -41,10 +39,12 @@ function Movies(props) {
     if (widthBrowser >= MAX_SCREEN) {
       setInitialMovies(MAX_MOVIES);
       setAdditionalMovies(MAX_ADD_MOVIES);
-    } else if (widthBrowser > MEDIUM__SCREEN && widthBrowser < MAX_SCREEN) {
+
+    } else if (widthBrowser >= MEDIUM__SCREEN && widthBrowser < MAX_SCREEN) {
       setInitialMovies(MEDIUM_MOVIES);
       setAdditionalMovies(MIN_ADD_MOVIES);
-    } else if (widthBrowser <= MEDIUM__SCREEN) {
+
+    } else if (widthBrowser >= MIN__SCREEN && widthBrowser < MEDIUM__SCREEN) {
       setInitialMovies(MIN_MOVIES);
       setAdditionalMovies(MIN_ADD_MOVIES);
     }
